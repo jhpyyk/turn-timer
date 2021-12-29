@@ -1,12 +1,26 @@
-import React, { useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { Text } from 'react-native';
 
 export default function Timer() {
-    const [seconds, setSeconds] = useState(10);
+  const [seconds, setSeconds] = useState(10);
 
-    return (
-      <Text>
-        {seconds}
-      </Text>
-    );
+  useEffect(() => {
+
+    if (seconds == 0) {
+      return;
+    }
+
+    const timer = setTimeout(() => {
+      setSeconds(s => s -1)
+    }, 1000);
+
+
+    return () => clearTimeout(timer);
+  });
+
+  return (
+    <Text>
+      {seconds}
+    </Text>
+  );
 }
