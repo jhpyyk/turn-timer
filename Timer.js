@@ -5,7 +5,7 @@ export default function Timer(props) {
 
   const [startTime, setStartTime] = useState(Date.now());
   const [timeLeft, setTimeLeft] = useState(props.duration);
-  const [uiSeconds, setUiSeconds] = useState(timeLeft % 1000);
+  const [uiTime, setUiTime] = useState(timeLeft / 1000);
 
   const calculateTimeLeft = () => {
     let timeElapsed = Date.now() - startTime;
@@ -13,11 +13,11 @@ export default function Timer(props) {
   };
 
   const formatTime = (milliseconds) => {
-    let time = {
-      minutes: Math.floor((milliseconds / 1000) / 60),
-      seconds: Math.floor(milliseconds / 1000)
-    };
-    return time;
+    let minutes = Math.floor((milliseconds / 1000) / 60);
+    let seconds = Math.floor((milliseconds / 1000) % 60);
+    let formattedTime = minutes.toString().padStart(2, '0') + ":"
+                        + seconds.toString().padStart(2, '0');
+    return formattedTime;
   };
 
   useEffect(() => {
@@ -28,7 +28,7 @@ export default function Timer(props) {
 
     const timer = setTimeout(() => {
       setTimeLeft(calculateTimeLeft());
-      setUiSeconds(formatTime(timeLeft).seconds);
+      setUiTime(formatTime(timeLeft));
     }, 100);
 
 
@@ -37,7 +37,7 @@ export default function Timer(props) {
 
   return (
     <Text>
-      {uiSeconds}
+      {uiTime}
     </Text>
   );
 }
