@@ -1,18 +1,35 @@
 import React, { useEffect, useState } from 'react';
 import { Text } from 'react-native';
 
-export default function Timer() {
-  const [seconds, setSeconds] = useState(10);
+export default function Timer(props) {
+
+  const [startTime, setStartTime] = useState(Date.now());
+  const [timeLeft, setTimeLeft] = useState(props.duration);
+  const [uiSeconds, setUiSeconds] = useState(timeLeft % 1000);
+
+  const calculateTimeLeft = () => {
+    let timeElapsed = Date.now() - startTime;
+    return props.duration - timeElapsed;
+  };
+
+  const formatTime = (milliseconds) => {
+    let time = {
+      minutes: Math.floor((milliseconds / 1000) / 60),
+      seconds: Math.floor(milliseconds / 1000)
+    };
+    return time;
+  };
 
   useEffect(() => {
 
-    if (seconds == 0) {
-      return;
+    if (timeLeft < 0) {
+      return () => clearTimeout(timer);
     }
 
     const timer = setTimeout(() => {
-      setSeconds(s => s -1)
-    }, 1000);
+      setTimeLeft(calculateTimeLeft());
+      setUiSeconds(formatTime(timeLeft).seconds);
+    }, 100);
 
 
     return () => clearTimeout(timer);
@@ -20,7 +37,7 @@ export default function Timer() {
 
   return (
     <Text>
-      {seconds}
+      {uiSeconds}
     </Text>
   );
 }

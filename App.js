@@ -5,7 +5,7 @@ import Timer from './Timer.js';
 export default function App() {
   return (
     <View style={styles.container}>
-      <Timer />
+      <Timer duration = {30000} />
       <StatusBar style="auto" />
     </View>
   );
