@@ -1,19 +1,37 @@
 import React, { useEffect, useState } from 'react';
 import TimeDisplay from './TimeDisplay';
+import EndTurnButton from './EndTurnButton';
+import { View } from 'react-native';
 
 export default function Timer(props) {
 
-  const [startTime, setStartTime] = useState(Date.now());
-  const [timeLeft, setTimeLeft] = useState(props.duration);
+  const [startingTime, setStartingTime] = useState(Date.now());
+  const [duration, setDuration] = useState(props.duration)
+  const [timeLeft, setTimeLeft] = useState(duration);
+  const [timerRunning, setTimerRunning] = useState(false);
 
   const calculateTimeLeft = () => {
-    let timeElapsed = Date.now() - startTime;
-    return props.duration - timeElapsed;
+    let timeElapsed = Date.now() - startingTime;
+    return duration - timeElapsed;
   };
+
+  const isTimerRunning = () => {
+    return timerRunning;
+  }
+
+  const startTimer = () => {
+    setStartingTime(Date.now());
+    setTimerRunning(true);
+  }
+
+  const stopTimer = () => {
+    setDuration(timeLeft);
+    setTimerRunning(false);
+  }
 
   useEffect(() => {
 
-    if (timeLeft < 0) {
+    if (!timerRunning || (timeLeft <= 0)) {
       return () => clearTimeout(timer);
     }
 
@@ -25,6 +43,13 @@ export default function Timer(props) {
   });
 
   return (
-    <TimeDisplay duration = {timeLeft}/>
+    <View>
+      <EndTurnButton
+        duration = {timeLeft}
+        isTimerRunning = {isTimerRunning}
+        startTimer = {startTimer}
+        stopTimer = {stopTimer}
+      />
+    </View>
   );
 }

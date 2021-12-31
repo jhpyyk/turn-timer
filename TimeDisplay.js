@@ -8,7 +8,7 @@ export default function TimeDisplay(props) {
     let minutes = Math.floor((milliseconds / 1000) / 60);
     let seconds = Math.floor((milliseconds / 1000) % 60);
     let formattedTime = minutes.toString().padStart(2, '0') + ":"
-                        + seconds.toString().padStart(2, '0');
+                      + seconds.toString().padStart(2, '0');
     return formattedTime;
   };
 

@@ -8,7 +8,6 @@ export default function App() {
     <View style={styles.container}>
       <Timer duration = {10 * 60 * 1000} />
       <StatusBar style="auto" />
-      <EndTurnButton/>
     </View>
   );
 }

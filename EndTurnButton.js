@@ -1,15 +1,28 @@
 import React, { useState } from "react";
 import { TouchableOpacity, StyleSheet, Text, View } from "react-native";
+import TimeDisplay from "./TimeDisplay";
 
-export default function EndTurnButton() {
+export default function EndTurnButton(props) {
   const [text, setText] = useState('Start');
+
+  const handlePress = () => {
+    if (props.isTimerRunning()) {
+      setText('End turn');
+      props.stopTimer();
+    } else {
+      props.startTimer();
+    }
+  }
 
   return (
     <View>
-      <TouchableOpacity style = {styles.buttonStyle}>
+      <TouchableOpacity
+        style = {styles.buttonStyle}
+        onPress = {handlePress}>
         <Text>
           {text}
         </Text>
+        <TimeDisplay duration = {props.duration} />
       </TouchableOpacity>
     </View>
   );
