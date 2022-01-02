@@ -9,6 +9,7 @@ export default function App() {
     <View style={styles.container}>
       <Player duration={10 * 60 * 1000} />
       <Timer duration={10 * 60 * 1000} />
+      <Timer duration={10 * 60 * 1000} />
       <StatusBar style="auto" />
     </View>
   );
