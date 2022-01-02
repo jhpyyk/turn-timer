@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import TimeDisplay from './TimeDisplay';
-import EndTurnButton from './EndTurnButton';
-import { View } from 'react-native';
+import { View, StyleSheet } from 'react-native';
+import EndTurnButton from './EndTurnButton.js';
+import PauseButton from './PauseButton.js';
 
 export default function Timer(props) {
 
@@ -43,13 +43,22 @@ export default function Timer(props) {
   });
 
   return (
-    <View>
+    <View style = {styles.container}>
       <EndTurnButton
         duration = {timeLeft}
         isTimerRunning = {isTimerRunning}
         startTimer = {startTimer}
         stopTimer = {stopTimer}
       />
+      <PauseButton/>
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+});

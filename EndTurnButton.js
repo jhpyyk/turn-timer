@@ -15,16 +15,14 @@ export default function EndTurnButton(props) {
   }
 
   return (
-    <View>
-      <TouchableOpacity
-        style = {styles.buttonStyle}
-        onPress = {handlePress}>
-        <Text>
-          {text}
-        </Text>
-        <TimeDisplay duration = {props.duration} />
-      </TouchableOpacity>
-    </View>
+    <TouchableOpacity
+      style = {styles.buttonStyle}
+      onPress = {handlePress}>
+      <Text>
+        {text}
+      </Text>
+      <TimeDisplay duration = {props.duration} />
+    </TouchableOpacity>
   );
 }
 
@@ -34,8 +32,8 @@ const styles = StyleSheet.create({
     height: 300,
     justifyContent: 'center',
     alignItems: 'center',
-    padding: 100,
-    borderRadius: 300,
+    margin: 20,
+    borderRadius: 150,
     backgroundColor: 'orange',
   },
 });
