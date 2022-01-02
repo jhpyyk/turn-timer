@@ -8,7 +8,7 @@ export default function Timer(props) {
   const [startingTime, setStartingTime] = useState(Date.now());
   const [duration, setDuration] = useState(props.duration)
   const [timeLeft, setTimeLeft] = useState(duration);
-  const [timerRunning, setTimerRunning] = useState(false);
+  const [timerRunning, setTimerRunning] = useState(null);
 
   const calculateTimeLeft = () => {
     let timeElapsed = Date.now() - startingTime;
@@ -48,9 +48,11 @@ export default function Timer(props) {
         duration = {timeLeft}
         isTimerRunning = {isTimerRunning}
         startTimer = {startTimer}
+      />
+      <PauseButton
+        isTimerRunning = {isTimerRunning}
         stopTimer = {stopTimer}
       />
-      <PauseButton/>
     </View>
   );
 }
