@@ -1,34 +1,39 @@
 import React, { useState } from "react";
-import { TouchableOpacity, StyleSheet, Text, View } from "react-native";
+import { Pressable, StyleSheet, Text } from "react-native";
 import { useEffect } from "react/cjs/react.development";
 import TimeDisplay from "./TimeDisplay";
 
 export default function EndTurnButton(props) {
-  const [buttonText, setButtonText] = useState('Start');
+  const [buttonText, setButtonText] = useState("Start");
 
-  const handlePress = () => {
+  const handlePressIn = () => {
     if (!props.isTimerRunning()) {
       props.startTimer();
     }
-  }
+  };
 
   useEffect(() => {
     if (props.isTimerRunning()) {
-      setButtonText('End turn');
+      setButtonText("End turn");
     } else {
-      setButtonText('Start')
+      setButtonText("Start");
     }
   });
 
   return (
-    <TouchableOpacity
-      style = {styles.buttonStyle}
-      onPress = {handlePress}>
-      <Text>
-        {buttonText}
-      </Text>
-      <TimeDisplay duration = {props.duration} />
-    </TouchableOpacity>
+    <Pressable
+      style={styles.buttonStyle}
+      onPressIn={handlePressIn}
+      android_ripple={{
+        foreground: true,
+        color: "darkorange",
+        borderless: true,
+        radius: 150,
+      }}
+    >
+      <Text>{buttonText}</Text>
+      <TimeDisplay duration={props.duration} />
+    </Pressable>
   );
 }
 
@@ -36,10 +41,10 @@ const styles = StyleSheet.create({
   buttonStyle: {
     width: 300,
     height: 300,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     margin: 20,
     borderRadius: 150,
-    backgroundColor: 'orange',
+    backgroundColor: "orange",
   },
 });
