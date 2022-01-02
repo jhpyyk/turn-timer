@@ -1,24 +1,18 @@
-import React, { useState, useEffect } from "react";
-import { View, StyleSheet, Pressable, Text } from "react-native";
-import TimeDisplay from "./TimeDisplay";
+import React, { useState } from "react";
+import Timer from "./Timer";
 
 export default function Player(props) {
-  const [timeLeft, setTimeLeft] = useState(props.duration);
+  const [playerTimeLeft, setPlayerTimeLeft] = useState(props.duration);
+
+  const getPlayerTimeLeft = () => {
+    return playerTimeLeft;
+  };
+
   return (
-    <Pressable style={styles.boxStyle}>
-      <TimeDisplay duration={timeLeft} />
-    </Pressable>
+    <Timer
+      duration={props.duration}
+      getPlayerTimeLeft={getPlayerTimeLeft}
+      setPlayerTimeLeft={setPlayerTimeLeft}
+    />
   );
 }
-
-const styles = StyleSheet.create({
-  boxStyle: {
-    width: 150,
-    height: 20,
-    justifyContent: "center",
-    alignItems: "center",
-    margin: 20,
-    borderRadius: 10,
-    backgroundColor: "orange",
-  },
-});
