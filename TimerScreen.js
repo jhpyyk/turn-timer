@@ -1,12 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { StyleSheet, View } from "react-native";
-import Player from "./Player.js";
 
 export default function TimerScreen(props) {
-  const [playerArray, setPlayerArray] = useState(props.players);
-  const [playerInTurn, setPlayerInTurn] = useState(playerArray[1]);
+  const [playerInTurn, setPlayerInTurn] = useState(0);
 
-  return <View style={styles.container}>{playerInTurn}</View>;
+  const nextPlayer = () => {
+    setPlayerInTurn(playerInTurn + 1);
+    if (playerInTurn > playerArray.length - 1) {
+      setPlayerInTurn(0);
+    }
+  };
+
+  return <View style={styles.container}>{props.players[playerInTurn]}</View>;
 }
 
 const styles = StyleSheet.create({

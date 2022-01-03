@@ -25,8 +25,7 @@ export default function EndTurnButton(props) {
       onPressIn={handlePressIn}
       android_ripple={{
         foreground: true,
-        color: "darkorange",
-        borderless: true,
+        color: "black",
         radius: 150,
       }}
     >
