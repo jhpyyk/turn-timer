@@ -22,7 +22,7 @@ export default function PauseButton(props) {
   return (
     <View style={{ opacity: buttonOpacity }}>
       <Pressable
-        style={styles.buttonStyle}
+        style={[styles.buttonStyle, { backgroundColor: props.color }]}
         onPressIn={handlePressIn}
         disabled={buttonDisabled}
       >
@@ -40,6 +40,5 @@ const styles = StyleSheet.create({
     alignItems: "center",
     margin: 20,
     borderRadius: 10,
-    backgroundColor: "orange",
   },
 });

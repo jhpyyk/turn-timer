@@ -2,12 +2,11 @@ import React, { useState, useEffect } from "react";
 import { StyleSheet, View } from "react-native";
 import Player from "./Player.js";
 
-export default function TimerScreen() {
-  return (
-    <View style={styles.container}>
-      <Player duration={10 * 60 * 1000} />
-    </View>
-  );
+export default function TimerScreen(props) {
+  const [playerArray, setPlayerArray] = useState(props.players);
+  const [playerInTurn, setPlayerInTurn] = useState(playerArray[1]);
+
+  return <View style={styles.container}>{playerInTurn}</View>;
 }
 
 const styles = StyleSheet.create({

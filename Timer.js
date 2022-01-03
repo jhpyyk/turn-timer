@@ -45,8 +45,13 @@ export default function Timer(props) {
         duration={props.getPlayerTimeLeft()}
         isTimerRunning={isTimerRunning}
         startTimer={startTimer}
+        color={props.playerColor}
       />
-      <PauseButton isTimerRunning={isTimerRunning} stopTimer={stopTimer} />
+      <PauseButton
+        isTimerRunning={isTimerRunning}
+        stopTimer={stopTimer}
+        color={props.playerColor}
+      />
     </View>
   );
 }

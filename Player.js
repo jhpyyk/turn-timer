@@ -13,6 +13,7 @@ export default function Player(props) {
       duration={props.duration}
       getPlayerTimeLeft={getPlayerTimeLeft}
       setPlayerTimeLeft={setPlayerTimeLeft}
+      playerColor={props.playerColor}
     />
   );
 }

@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Pressable, StyleSheet, Text } from "react-native";
-import { useEffect } from "react/cjs/react.development";
 import TimeDisplay from "./TimeDisplay";
 
 export default function EndTurnButton(props) {
@@ -22,7 +21,7 @@ export default function EndTurnButton(props) {
 
   return (
     <Pressable
-      style={styles.buttonStyle}
+      style={[styles.buttonStyle, { backgroundColor: props.color }]}
       onPressIn={handlePressIn}
       android_ripple={{
         foreground: true,
@@ -45,6 +44,5 @@ const styles = StyleSheet.create({
     alignItems: "center",
     margin: 20,
     borderRadius: 150,
-    backgroundColor: "orange",
   },
 });

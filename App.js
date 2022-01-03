@@ -1,24 +1,18 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
-import Timer from "./Timer.js";
-import EndTurnButton from "./EndTurnButton.js";
+import { View } from "react-native";
 import Player from "./Player.js";
+import TimerScreen from "./TimerScreen.js";
 
 export default function App() {
+  const player1 = <Player duration={1 * 60 * 1000} playerColor={"orange"} />;
+  const player2 = <Player duration={2 * 60 * 1000} playerColor={"green"} />;
+  const player3 = <Player duration={3 * 60 * 1000} playerColor={"red"} />;
+  const players = [player1, player2, player3];
+
   return (
-    <View style={styles.container}>
-      <Player duration={10 * 60 * 1000} />
+    <View style={{ flex: 1 }}>
       <StatusBar style="auto" />
+      <TimerScreen players={players} />
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "dodgerblue",
-    alignItems: "center",
-    justifyContent: "center",
-    padding: 50,
-  },
-});
