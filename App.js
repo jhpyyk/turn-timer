@@ -5,10 +5,9 @@ import Player from "./Player.js";
 import TimerScreen from "./TimerScreen.js";
 
 export default function App() {
-  const player1 = <Player duration={1 * 60 * 1000} playerColor={"orange"} />;
-  const player2 = <Player duration={2 * 60 * 1000} playerColor={"green"} />;
-  const player3 = <Player duration={3 * 60 * 1000} playerColor={"red"} />;
-  const players = [player1, player2, player3];
+  const player1 = { playerName: "1", playerColor: "green" };
+  const player2 = { playerName: "2", playerColor: "red" };
+  const players = [player1, player2];
 
   return (
     <View style={{ flex: 1 }}>
@@ -17,3 +16,4 @@ export default function App() {
     </View>
   );
 }
+//<TimerScreen duration={9 * 60 * 1000} playerArray={players} />

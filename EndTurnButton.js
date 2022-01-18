@@ -5,8 +5,10 @@ import TimeDisplay from "./TimeDisplay";
 export default function EndTurnButton(props) {
   const [buttonText, setButtonText] = useState("Start");
 
-  const handlePressIn = () => {
-    if (!props.isTimerRunning()) {
+  const handlePress = () => {
+    if (props.isTimerRunning()) {
+      props.nextPlayer();
+    } else {
       props.startTimer();
     }
   };
@@ -22,7 +24,7 @@ export default function EndTurnButton(props) {
   return (
     <Pressable
       style={[styles.buttonStyle, { backgroundColor: props.color }]}
-      onPressIn={handlePressIn}
+      onPress={handlePress}
       android_ripple={{
         foreground: true,
         color: "black",

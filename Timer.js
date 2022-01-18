@@ -7,6 +7,7 @@ export default function Timer(props) {
   const [startingTime, setStartingTime] = useState(Date.now());
   const [duration, setDuration] = useState(props.duration);
   const [timerRunning, setTimerRunning] = useState(false);
+  const [playerTimeLeft, setPlayerTimeLeft] = useState(props.duration);
 
   const calculateTimeLeft = () => {
     let timeElapsed = Date.now() - startingTime;
@@ -23,17 +24,17 @@ export default function Timer(props) {
   };
 
   const stopTimer = () => {
-    setDuration(props.getPlayerTimeLeft());
+    setDuration(playerTimeLeft);
     setTimerRunning(false);
   };
 
   useEffect(() => {
-    if (!timerRunning || props.getPlayerTimeLeft() <= 0) {
+    if (!timerRunning || playerTimeLeft <= 0) {
       return () => clearTimeout(timer);
     }
 
     const timer = setTimeout(() => {
-      props.setPlayerTimeLeft(calculateTimeLeft());
+      setPlayerTimeLeft(calculateTimeLeft());
     }, 100);
 
     return () => clearTimeout(timer);
@@ -42,9 +43,10 @@ export default function Timer(props) {
   return (
     <View style={styles.container}>
       <EndTurnButton
-        duration={props.getPlayerTimeLeft()}
+        duration={playerTimeLeft}
         isTimerRunning={isTimerRunning}
         startTimer={startTimer}
+        nextPlayer={props.nextPlayer}
         color={props.playerColor}
       />
       <PauseButton
