@@ -1,18 +1,30 @@
 import { StatusBar } from "expo-status-bar";
+import { useEffect, useState } from "react";
 import { View } from "react-native";
 import AddPlayersScreen from "./AddPlayersScreen.js";
 import Player from "./Player.js";
 import TimerScreen from "./TimerScreen.js";
 
 export default function App() {
-  const player1 = { playerName: "1", playerColor: "green" };
-  const player2 = { playerName: "2", playerColor: "red" };
-  const players = [player1, player2];
+  const [screen, setScreen] = useState(null);
+
+  const addPlayersDoneHandle = (info) => {
+    setScreen(<TimerScreen playerInfo={info} />);
+  };
+
+  useEffect(() => {
+    setScreen(
+      <AddPlayersScreen
+        duration={9 * 60 * 1000}
+        addPlayersDoneHandle={addPlayersDoneHandle}
+      />
+    );
+  }, []);
 
   return (
     <View style={{ flex: 1 }}>
       <StatusBar style="auto" />
-      <AddPlayersScreen />
+      {screen}
     </View>
   );
 }

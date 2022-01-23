@@ -7,9 +7,9 @@ export default function EndTurnButton(props) {
 
   const handlePress = () => {
     if (props.isTimerRunning()) {
-      props.nextPlayer();
+      props.endTurn();
     } else {
-      props.startTimer();
+      props.timerStart();
     }
   };
 
@@ -23,7 +23,7 @@ export default function EndTurnButton(props) {
 
   return (
     <Pressable
-      style={[styles.buttonStyle, { backgroundColor: props.color }]}
+      style={[styles.buttonStyle, { backgroundColor: props.playerColor }]}
       onPress={handlePress}
       android_ripple={{
         foreground: true,
@@ -32,7 +32,7 @@ export default function EndTurnButton(props) {
       }}
     >
       <Text>{buttonText}</Text>
-      <TimeDisplay duration={props.duration} />
+      <TimeDisplay displayTime={props.displayTime} />
     </Pressable>
   );
 }

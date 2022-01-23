@@ -1,25 +1,68 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { StyleSheet, View } from "react-native";
-import Timer from "./Timer";
+import EndTurnButton from "./EndTurnButton";
 
 export default function TimerScreen(props) {
-  const [playerInTurn, setPlayerInTurn] = useState(0);
+  const playerArray = props.playerInfo;
+  const [playerIndex, setPlayerIndex] = useState(0);
+  const [playerInTurn, setPlayerInTurn] = useState(playerArray[0]);
+  const [timerRunning, setTimerRunning] = useState(false);
+  const [startingTime, setStartingTime] = useState(Date.now());
 
-  const nextPlayer = () => {
-    setPlayerInTurn(playerInTurn + 1);
-    if (playerInTurn > props.playerArray.length - 1) {
-      setPlayerInTurn(0);
+  const endTurn = () => {
+    playerArray[playerIndex] = playerInTurn;
+    if (playerIndex + 1 >= playerArray.length) {
+      setPlayerIndex(0);
+    } else {
+      setPlayerIndex(playerIndex + 1);
     }
   };
 
-  const createPlayerTimers = () => {};
+  const isTimerRunning = () => {
+    return timerRunning;
+  };
+
+  const timerStart = () => {
+    setStartingTime(Date.now());
+    setTimerRunning(true);
+  };
+
+  const timerStop = () => {
+    setDuration(playerTimeLeft);
+    setTimerRunning(false);
+  };
+
+  const calculateTimeLeft = () => {
+    let timeElapsed = Date.now() - startingTime;
+    return playerInTurn.playerTimeLeft - timeElapsed;
+  };
+
+  useEffect(() => {
+    if (!timerRunning || playerInTurn.playerTimeLeft <= 0) {
+      return () => clearTimeout(timer);
+    }
+
+    const timer = setTimeout(() => {
+      setPlayerInTurn({ playerTimeLeft: calculateTimeLeft() });
+      setStartingTime(Date.now());
+    }, 100);
+
+    return () => clearTimeout(timer);
+  });
+
+  useEffect(() => {
+    setPlayerInTurn(playerArray[playerIndex]);
+    console.log(playerInTurn.playerTimeLeft);
+  }, [playerIndex]);
 
   return (
     <View style={styles.container}>
-      <Timer
-        duration={props.duration}
-        playerColor={props.playerArray[0].playerColor}
-        nextPlayer={nextPlayer}
+      <EndTurnButton
+        displayTime={playerInTurn.playerTimeLeft}
+        playerColor={playerInTurn.playerColor}
+        endTurn={endTurn}
+        isTimerRunning={isTimerRunning}
+        timerStart={timerStart}
       />
     </View>
   );

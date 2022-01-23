@@ -1,15 +1,18 @@
 import React, { useEffect, useRef, useState } from "react";
 import { View, StyleSheet, TextInput, Pressable, Text } from "react-native";
 
-export default function AddPlayersScreen() {
+export default function AddPlayersScreen(props) {
   const [name, setName] = useState(null);
   const [color, setColor] = useState(null);
-  const [playerArray, setPlayerArray] = useState([]);
+  const [playerInfo, setPlayerInfo] = useState([]);
   const nameField = useRef();
   const colorField = useRef();
 
-  const addPlayer = () => {
-    setPlayerArray([...playerArray, { name: name, color: color }]);
+  const addPlayerHandle = () => {
+    setPlayerInfo([
+      ...playerInfo,
+      { playerName: name, playerColor: color, playerTimeLeft: props.duration },
+    ]);
     nameField.current.clear();
     colorField.current.clear();
   };
@@ -28,8 +31,14 @@ export default function AddPlayersScreen() {
         placeholder="Color"
         onChangeText={setColor}
       />
-      <Pressable onPress={addPlayer} style={styles.buttonStyle}>
+      <Pressable onPress={addPlayerHandle} style={styles.buttonStyle}>
         <Text style={{ color: "white" }}>{"Add Player"}</Text>
+      </Pressable>
+      <Pressable
+        onPress={() => props.addPlayersDoneHandle(playerInfo)}
+        style={styles.buttonStyle}
+      >
+        <Text style={{ color: "white" }}>{"Done"}</Text>
       </Pressable>
     </View>
   );
@@ -54,7 +63,7 @@ const styles = StyleSheet.create({
   buttonStyle: {
     width: 100,
     height: 40,
-    margin: 20,
+    margin: 5,
     borderRadius: 15,
     justifyContent: "center",
     alignItems: "center",
