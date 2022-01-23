@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import { View, StyleSheet, TextInput, Pressable, Text } from "react-native";
 
 export default function AddPlayersScreen(props) {

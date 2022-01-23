@@ -6,7 +6,7 @@ export default function PauseButton(props) {
   const [buttonDisabled, setButtonDisabled] = useState(false);
 
   const handlePressIn = () => {
-    props.stopTimer();
+    props.timerStop();
   };
 
   useEffect(() => {

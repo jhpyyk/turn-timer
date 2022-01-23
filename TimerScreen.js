@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { StyleSheet, View } from "react-native";
 import EndTurnButton from "./EndTurnButton";
+import PauseButton from "./PauseButton";
 
 export default function TimerScreen(props) {
   const playerArray = props.playerInfo;
@@ -28,8 +29,12 @@ export default function TimerScreen(props) {
   };
 
   const timerStop = () => {
-    setDuration(playerTimeLeft);
+    updatePlayerTime();
     setTimerRunning(false);
+  };
+
+  const updatePlayerTime = () => {
+    setPlayerInTurn({ ...playerInTurn, playerTimeLeft: calculateTimeLeft() });
   };
 
   const calculateTimeLeft = () => {
@@ -43,7 +48,7 @@ export default function TimerScreen(props) {
     }
 
     const timer = setTimeout(() => {
-      setPlayerInTurn({ playerTimeLeft: calculateTimeLeft() });
+      updatePlayerTime();
       setStartingTime(Date.now());
     }, 100);
 
@@ -63,6 +68,11 @@ export default function TimerScreen(props) {
         endTurn={endTurn}
         isTimerRunning={isTimerRunning}
         timerStart={timerStart}
+      />
+      <PauseButton
+        timerStop={timerStop}
+        isTimerRunning={isTimerRunning}
+        color={playerInTurn.playerColor}
       />
     </View>
   );
