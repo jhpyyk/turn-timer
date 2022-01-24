@@ -15,7 +15,7 @@ export default function TimeDisplay(props) {
   };
 
   useEffect(() => {
-    setUiTime(formatTime(props.displayTime));
+    setUiTime(formatTime(props.timeToDisplay));
   });
 
   return <Text>{uiTime}</Text>;

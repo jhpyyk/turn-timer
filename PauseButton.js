@@ -5,7 +5,7 @@ export default function PauseButton(props) {
   const [buttonOpacity, setButtonOpacity] = useState(0.5);
   const [buttonDisabled, setButtonDisabled] = useState(false);
 
-  const handlePressIn = () => {
+  const handlePress = () => {
     props.timerStop();
   };
 
@@ -23,7 +23,7 @@ export default function PauseButton(props) {
     <View style={{ opacity: buttonOpacity }}>
       <Pressable
         style={[styles.buttonStyle, { backgroundColor: props.color }]}
-        onPressIn={handlePressIn}
+        onPress={handlePress}
         disabled={buttonDisabled}
       >
         <Text>{"Pause"}</Text>

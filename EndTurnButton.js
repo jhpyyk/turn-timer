@@ -23,7 +23,7 @@ export default function EndTurnButton(props) {
 
   return (
     <Pressable
-      style={[styles.buttonStyle, { backgroundColor: props.playerColor }]}
+      style={[styles.buttonStyle, { backgroundColor: props.color }]}
       onPress={handlePress}
       android_ripple={{
         foreground: true,
@@ -32,7 +32,7 @@ export default function EndTurnButton(props) {
       }}
     >
       <Text>{buttonText}</Text>
-      <TimeDisplay displayTime={props.displayTime} />
+      <TimeDisplay timeToDisplay={props.timeToDisplay} />
     </Pressable>
   );
 }

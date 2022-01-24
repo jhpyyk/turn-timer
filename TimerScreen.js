@@ -2,15 +2,14 @@ import React, { useState, useEffect } from "react";
 import { StyleSheet, View } from "react-native";
 import EndTurnButton from "./EndTurnButton";
 import PauseButton from "./PauseButton";
+import PlayerList from "./PlayerList";
 
 export default function TimerScreen(props) {
-  const [playerArray, setPlayerArray] = useState(props.playerInfo);
+  const [playerArray, setPlayerArray] = useState([...props.playerInfo]);
   const [playerIndex, setPlayerIndex] = useState(0);
   const [timerRunning, setTimerRunning] = useState(false);
   const [startingTime, setStartingTime] = useState(Date.now());
-  const [timeToDisplay, setTimeToDisplay] = useState(
-    props.playerInfo[0].playerTimeLeft
-  );
+  let timeStamp;
 
   const endTurn = () => {
     updatePlayerTime();
@@ -37,26 +36,27 @@ export default function TimerScreen(props) {
 
   const updatePlayerTime = () => {
     let temp = [...playerArray];
-    temp[playerIndex].playerTimeLeft = calculateTimeLeft();
+    temp[playerIndex].timeLeft = calculateTimeLeft();
     setPlayerArray(temp);
   };
 
   const calculateTimeLeft = () => {
-    let timeElapsed = Date.now() - startingTime;
-    let time = playerArray[playerIndex].playerTimeLeft - timeElapsed;
-    return time;
+    timeStamp = Date.now();
+    let timeElapsed = timeStamp - startingTime;
+    return playerArray[playerIndex].timeLeft - timeElapsed;
   };
 
   useEffect(() => {
-    if (!timerRunning || playerArray[playerIndex].playerTimeLeft <= 0) {
-      return () => clearTimeout(timer);
+    if (!timerRunning || playerArray[playerIndex].timeLeft <= 0) {
+      return () => clearTimeout(tick);
     }
 
-    const timer = setTimeout(() => {
-      setTimeToDisplay(calculateTimeLeft());
-    }, 100);
+    const tick = setTimeout(() => {
+      updatePlayerTime(calculateTimeLeft());
+      setStartingTime(timeStamp);
+    }, 50);
 
-    return () => clearTimeout(timer);
+    return () => clearTimeout(tick);
   });
 
   useEffect(() => {
@@ -65,9 +65,14 @@ export default function TimerScreen(props) {
 
   return (
     <View style={styles.container}>
+      <PlayerList
+        playerArray={playerArray}
+        timeToDisplay={playerArray[playerIndex].timeLeft}
+        playerIndex={playerIndex}
+      />
       <EndTurnButton
-        displayTime={timeToDisplay}
-        playerColor={playerArray[playerIndex].playerColor}
+        timeToDisplay={playerArray[playerIndex].timeLeft}
+        color={playerArray[playerIndex].color}
         endTurn={endTurn}
         isTimerRunning={isTimerRunning}
         timerStart={timerStart}
@@ -75,7 +80,7 @@ export default function TimerScreen(props) {
       <PauseButton
         timerStop={timerStop}
         isTimerRunning={isTimerRunning}
-        color={playerArray[playerIndex].playerColor}
+        color={playerArray[playerIndex].color}
       />
     </View>
   );

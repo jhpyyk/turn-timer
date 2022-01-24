@@ -11,7 +11,7 @@ export default function AddPlayersScreen(props) {
   const addPlayerHandle = () => {
     setPlayerInfo([
       ...playerInfo,
-      { playerName: name, playerColor: color, playerTimeLeft: props.duration },
+      { name: name, color: color, timeLeft: props.duration },
     ]);
     nameField.current.clear();
     colorField.current.clear();
