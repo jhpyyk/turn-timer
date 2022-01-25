@@ -12,7 +12,6 @@ export default function TimerScreen(props) {
   let timeStamp;
 
   const endTurn = () => {
-    updatePlayerTime();
     if (playerIndex + 1 >= playerArray.length) {
       setPlayerIndex(0);
     } else {
@@ -30,13 +29,16 @@ export default function TimerScreen(props) {
   };
 
   const timerStop = () => {
-    updatePlayerTime();
+    updatePlayerTime(calculateTimeLeft());
     setTimerRunning(false);
   };
 
-  const updatePlayerTime = () => {
+  const updatePlayerTime = (time) => {
+    if (time < 0) {
+      time = 0;
+    }
     let temp = [...playerArray];
-    temp[playerIndex].timeLeft = calculateTimeLeft();
+    temp[playerIndex].timeLeft = time;
     setPlayerArray(temp);
   };
 
@@ -50,7 +52,6 @@ export default function TimerScreen(props) {
     if (!timerRunning || playerArray[playerIndex].timeLeft <= 0) {
       return () => clearTimeout(tick);
     }
-
     const tick = setTimeout(() => {
       updatePlayerTime(calculateTimeLeft());
       setStartingTime(timeStamp);

@@ -18,5 +18,7 @@ export default function TimeDisplay(props) {
     setUiTime(formatTime(props.timeToDisplay));
   });
 
-  return <Text>{uiTime}</Text>;
+  return (
+    <Text style={{ color: "white", fontSize: props.fontSize }}>{uiTime}</Text>
+  );
 }

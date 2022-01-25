@@ -23,7 +23,7 @@ export default function EndTurnButton(props) {
 
   return (
     <Pressable
-      style={[styles.buttonStyle, { backgroundColor: props.color }]}
+      style={[styles.buttonStyle, { borderColor: props.color }]}
       onPress={handlePress}
       android_ripple={{
         foreground: true,
@@ -31,8 +31,8 @@ export default function EndTurnButton(props) {
         radius: 150,
       }}
     >
-      <Text>{buttonText}</Text>
-      <TimeDisplay timeToDisplay={props.timeToDisplay} />
+      <Text style={{ color: "white", fontSize: 20 }}>{buttonText}</Text>
+      <TimeDisplay timeToDisplay={props.timeToDisplay} fontSize={40} />
     </Pressable>
   );
 }
@@ -45,5 +45,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     margin: 20,
     borderRadius: 150,
+    borderWidth: 6,
   },
 });

@@ -22,11 +22,11 @@ export default function PauseButton(props) {
   return (
     <View style={{ opacity: buttonOpacity }}>
       <Pressable
-        style={[styles.buttonStyle, { backgroundColor: props.color }]}
+        style={[styles.buttonStyle, { borderColor: props.color }]}
         onPress={handlePress}
         disabled={buttonDisabled}
       >
-        <Text>{"Pause"}</Text>
+        <Text style={{ color: "white", fontSize: 20 }}>{"Pause"}</Text>
       </Pressable>
     </View>
   );
@@ -40,5 +40,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     margin: 20,
     borderRadius: 10,
+    borderWidth: 4,
   },
 });
