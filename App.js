@@ -15,19 +15,11 @@ export default function App() {
 
   const addPlayersDoneHandle = (info) => {
     if (info.length > 0) {
-      setScreen(<TimerScreen playerInfo={info} />);
+      setScreen(<TimerScreen playerInfo={testInfo} />);
     }
   };
 
   useEffect(() => {
-    if (Platform.OS == "android") {
-      TextInput.defaultProps = {
-        selectionColor: "white",
-        placeHolderColor: "grey",
-      };
-    }
-    console.log(Platform.OS);
-    console.log(TextInput.defaultProps.selectionColor);
     setScreen(<AddPlayersScreen addPlayersDoneHandle={addPlayersDoneHandle} />);
   }, []);
 

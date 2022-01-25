@@ -12,6 +12,8 @@ export default function PlayerList(props) {
       buttonOpacity={index == props.playerIndex ? 1 : 0.25}
       name={player.name}
       color={player.color}
+      changePlayerIndex={props.changePlayerIndex}
+      id={index}
     />
   ));
 

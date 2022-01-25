@@ -19,6 +19,11 @@ export default function TimerScreen(props) {
     }
   };
 
+  const changePlayerIndex = (index) => {
+    setTimerRunning(false);
+    setPlayerIndex(index);
+  };
+
   const isTimerRunning = () => {
     return timerRunning;
   };
@@ -70,6 +75,7 @@ export default function TimerScreen(props) {
         playerArray={playerArray}
         timeToDisplay={playerArray[playerIndex].timeLeft}
         playerIndex={playerIndex}
+        changePlayerIndex={changePlayerIndex}
       />
       <EndTurnButton
         timeToDisplay={playerArray[playerIndex].timeLeft}
