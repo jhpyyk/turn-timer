@@ -9,7 +9,7 @@ export default function PlayerList(props) {
       timeToDisplay={
         index == props.playerIndex ? props.timeToDisplay : player.timeLeft
       }
-      buttonOpacity={index == props.playerIndex ? 1 : 0.5}
+      buttonOpacity={index == props.playerIndex ? 1 : 0.25}
       name={player.name}
       color={player.color}
     />

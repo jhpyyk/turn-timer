@@ -14,16 +14,14 @@ export default function App() {
   ];
 
   const addPlayersDoneHandle = (info) => {
-    setScreen(<TimerScreen playerInfo={testInfo} />);
+    console.log(info);
+    if (info.length > 0) {
+      setScreen(<TimerScreen playerInfo={info} />);
+    }
   };
 
   useEffect(() => {
-    setScreen(
-      <AddPlayersScreen
-        duration={9 * 60 * 1000}
-        addPlayersDoneHandle={addPlayersDoneHandle}
-      />
-    );
+    setScreen(<AddPlayersScreen addPlayersDoneHandle={addPlayersDoneHandle} />);
   }, []);
 
   return (

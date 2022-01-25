@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { View, StyleSheet, Pressable, Text } from "react-native";
 
 export default function PauseButton(props) {
-  const [buttonOpacity, setButtonOpacity] = useState(0.5);
+  const [buttonOpacity, setButtonOpacity] = useState(0.15);
   const [buttonDisabled, setButtonDisabled] = useState(false);
 
   const handlePress = () => {
