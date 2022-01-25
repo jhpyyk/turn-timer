@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import { Pressable, StyleSheet, View, Text } from "react-native";
+import React from "react";
 import PlayerDisplay from "./PlayerDisplay";
 
 export default function PlayerList(props) {

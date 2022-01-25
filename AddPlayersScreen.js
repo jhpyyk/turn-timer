@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
 import { View, StyleSheet, TextInput, Pressable, Text } from "react-native";
+import ColorPick from "./ColorPick";
 
 export default function AddPlayersScreen(props) {
   const [minutes, setMinutes] = useState("");
@@ -107,6 +108,7 @@ export default function AddPlayersScreen(props) {
         onChangeText={(input) => setColor(input)}
         value={color}
       />
+      <ColorPick />
       <Pressable onPress={addPlayerHandle} style={styles.buttonStyle}>
         <Text style={{ color: "white" }}>{"Add Player"}</Text>
       </Pressable>
@@ -123,6 +125,7 @@ export default function AddPlayersScreen(props) {
 
 const styles = StyleSheet.create({
   container: {
+    display: "flex",
     flex: 1,
     backgroundColor: "#1C2833",
     alignItems: "center",
