@@ -1,23 +1,23 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { View, StyleSheet, TextInput, Pressable, Text } from "react-native";
 
 export default function AddPlayersScreen(props) {
-  const [minutes, setMinutes] = useState(null);
+  const [minutes, setMinutes] = useState("");
   const [minutesColor, setMinutesColor] = useState("white");
-  const [seconds, setSeconds] = useState("0");
+  const [seconds, setSeconds] = useState("");
   const [secondsColor, setSecondsColor] = useState("white");
-  const [name, setName] = useState(null);
-  const [color, setColor] = useState(null);
+  const [name, setName] = useState("");
+  const [color, setColor] = useState("");
   const [playerInfo, setPlayerInfo] = useState([]);
   const [infoText, setInfoText] = useState(" ");
-  const [infoTextColor, setInfoTextColor] = useState(" ");
+  const [infoTextColor, setInfoTextColor] = useState("white");
   const minutesField = useRef();
   const secondsField = useRef();
   const nameField = useRef();
   const colorField = useRef();
 
   const addPlayerHandle = () => {
-    if (!fieldNullCheck()) {
+    if (!fieldCheck()) {
       setInfoTextColor("red");
       setInfoText("Required field is empty");
     } else if (!validateNumber(minutes) || !validateNumber(seconds)) {
@@ -34,46 +34,34 @@ export default function AddPlayersScreen(props) {
       ]);
       nameField.current.clear();
       colorField.current.clear();
-      setName(null);
-      setColor(null);
+      setName("");
+      setColor("");
       setInfoTextColor("white");
       setInfoText("Player Added");
     }
   };
 
-  const handleMinutesChange = (input) => {
-    if (validateNumber(input)) {
-      setInfoText(" ");
-      setMinutes(input);
-      setMinutesColor("white");
-    } else {
-      setMinutesColor("red");
-    }
-  };
+  useEffect(() => {
+    setMinutesColor(validateNumber(minutes) ? "white" : "red");
+  }, [minutes]);
 
-  const handleSecondsChange = (input) => {
-    if (validateNumber(input)) {
-      setInfoText(" ");
-      setSeconds(input);
-      setSecondsColor("white");
-    } else {
-      setSecondsColor("red");
-    }
-  };
+  useEffect(() => {
+    setSecondsColor(validateNumber(seconds) ? "white" : "red");
+  }, [seconds]);
 
   const validateNumber = (number) => {
-    if (number == null || !number.match(/^[0-9]+$/)) {
-      return false;
+    if (number.length == 0 || number.match(/^[0-9]+$/)) {
+      return true;
     }
-    return true;
+    return false;
   };
 
-  const fieldNullCheck = () => {
-    if (minutes == null || minutes.length == 0) {
+  const fieldCheck = () => {
+    if (seconds.length == 0 && minutes.length == 0) {
       return false;
-    } else if (name == null || name.length == 0) {
+    } else if (name.length == 0) {
       return false;
-    } else if (color == null || color.length == 0) {
+    } else if (color.length == 0) {
       return false;
     }
     return true;
@@ -85,25 +73,39 @@ export default function AddPlayersScreen(props) {
         ref={minutesField}
         style={[styles.input, { color: minutesColor }]}
         placeholder="Minutes"
-        onChangeText={(input) => handleMinutesChange(input)}
+        placeholderTextColor="grey"
+        keyboardType="number-pad"
+        maxLength={6}
+        onChangeText={(input) => setMinutes(input)}
+        value={minutes}
       />
       <TextInput
         ref={secondsField}
         style={[styles.input, { color: secondsColor }]}
         placeholder="Seconds"
-        onChangeText={(input) => handleSecondsChange(input)}
+        placeholderTextColor="grey"
+        keyboardType="number-pad"
+        maxLength={15}
+        onChangeText={(input) => setSeconds(input)}
+        value={seconds}
       />
       <TextInput
         ref={nameField}
         style={styles.input}
         placeholder="Name"
+        placeholderTextColor="grey"
+        maxLength={15}
         onChangeText={(input) => setName(input)}
+        value={name}
       />
       <TextInput
         ref={colorField}
         style={styles.input}
         placeholder="Color"
+        placeholderTextColor="grey"
+        maxLength={15}
         onChangeText={(input) => setColor(input)}
+        value={color}
       />
       <Pressable onPress={addPlayerHandle} style={styles.buttonStyle}>
         <Text style={{ color: "white" }}>{"Add Player"}</Text>
@@ -127,6 +129,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   input: {
+    width: 200,
     height: 40,
     margin: 12,
     padding: 10,
@@ -135,7 +138,7 @@ const styles = StyleSheet.create({
     borderColor: "white",
   },
   buttonStyle: {
-    width: 100,
+    width: 200,
     height: 40,
     margin: 5,
     borderRadius: 15,

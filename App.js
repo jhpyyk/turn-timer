@@ -1,6 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import { useEffect, useState } from "react";
-import { View } from "react-native";
+import { View, TextInput, Platform } from "react-native";
 import AddPlayersScreen from "./AddPlayersScreen.js";
 import TimerScreen from "./TimerScreen.js";
 
@@ -14,21 +14,27 @@ export default function App() {
   ];
 
   const addPlayersDoneHandle = (info) => {
-    console.log(info);
     if (info.length > 0) {
       setScreen(<TimerScreen playerInfo={info} />);
     }
   };
 
   useEffect(() => {
+    if (Platform.OS == "android") {
+      TextInput.defaultProps = {
+        selectionColor: "white",
+        placeHolderColor: "grey",
+      };
+    }
+    console.log(Platform.OS);
+    console.log(TextInput.defaultProps.selectionColor);
     setScreen(<AddPlayersScreen addPlayersDoneHandle={addPlayersDoneHandle} />);
   }, []);
 
   return (
     <View style={{ flex: 1 }}>
-      <StatusBar style="auto" />
+      <StatusBar style="light" />
       {screen}
     </View>
   );
 }
-//<TimerScreen duration={9 * 60 * 1000} playerArray={players} />

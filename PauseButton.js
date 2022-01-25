@@ -34,8 +34,8 @@ export default function PauseButton(props) {
 
 const styles = StyleSheet.create({
   buttonStyle: {
-    width: 100,
-    height: 30,
+    width: 150,
+    height: 50,
     justifyContent: "center",
     alignItems: "center",
     margin: 20,
