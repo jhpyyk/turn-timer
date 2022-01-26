@@ -121,6 +121,7 @@ export default function AddPlayersScreen(props) {
 
 const styles = StyleSheet.create({
   container: {
+    display: "flex",
     flex: 1,
     backgroundColor: "#1C2833",
     alignItems: "center",

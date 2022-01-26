@@ -1,6 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import { useEffect, useState } from "react";
-import { View, TextInput, Platform } from "react-native";
+import { View, TextInput, Platform, PlatformColor } from "react-native";
 import AddPlayersScreen from "./AddPlayersScreen.js";
 import TimerScreen from "./TimerScreen.js";
 

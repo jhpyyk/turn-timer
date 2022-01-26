@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Pressable, StyleSheet, View, Text } from "react-native";
 import TimeDisplay from "./TimeDisplay";
-import TimerScreen from "./TimerScreen";
 
 export default function PlayerDisplay(props) {
   const handlePress = () => {
