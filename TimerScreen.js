@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import EndTurnButton from "./EndTurnButton";
 import PauseButton from "./PauseButton";
 import PlayerList from "./PlayerList";
@@ -88,7 +88,9 @@ export default function TimerScreen(props) {
         timerStop={timerStop}
         isTimerRunning={isTimerRunning}
         color={playerArray[playerIndex].color}
-      />
+      >
+        <Text>{"dddd"}</Text>
+      </PauseButton>
     </View>
   );
 }

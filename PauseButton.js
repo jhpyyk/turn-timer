@@ -26,6 +26,7 @@ export default function PauseButton(props) {
         onPress={handlePress}
         disabled={buttonDisabled}
       >
+        {props.children}
         <Text style={{ color: "white", fontSize: 20 }}>{"Pause"}</Text>
       </Pressable>
     </View>

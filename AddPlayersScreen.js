@@ -1,5 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import { View, StyleSheet, TextInput, Pressable, Text } from "react-native";
+import FormButton from "./FormButton";
+import RoundedEdgeButton from "./RoundedEdgeButton";
 
 export default function AddPlayersScreen(props) {
   const [minutes, setMinutes] = useState("");
@@ -107,15 +109,11 @@ export default function AddPlayersScreen(props) {
         onChangeText={(input) => setColor(input)}
         value={color}
       />
-      <Pressable onPress={addPlayerHandle} style={styles.buttonStyle}>
-        <Text style={{ color: "white" }}>{"Add Player"}</Text>
-      </Pressable>
-      <Pressable
+      <FormButton buttonText={"Add player"} onPress={addPlayerHandle} />
+      <FormButton
+        buttonText={"Done"}
         onPress={() => props.addPlayersDoneHandle(playerInfo)}
-        style={styles.buttonStyle}
-      >
-        <Text style={{ color: "white" }}>{"Done"}</Text>
-      </Pressable>
+      />
       <Text style={{ color: infoTextColor }}>{infoText}</Text>
     </View>
   );
