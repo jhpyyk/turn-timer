@@ -1,7 +1,7 @@
 import { StatusBar } from "expo-status-bar";
-import { useEffect, useState } from "react";
-import { View, TextInput, Platform, PlatformColor } from "react-native";
-import AddPlayersScreen from "./AddPlayersScreen.js";
+import React, { useEffect, useState } from "react";
+import { View } from "react-native";
+import AddPlayersForm from "./AddPlayersForm.js";
 import TimerScreen from "./TimerScreen.js";
 
 export default function App() {
@@ -20,7 +20,7 @@ export default function App() {
   };
 
   useEffect(() => {
-    setScreen(<AddPlayersScreen addPlayersDoneHandle={addPlayersDoneHandle} />);
+    setScreen(<AddPlayersForm addPlayersDoneHandle={addPlayersDoneHandle} />);
   }, []);
 
   return (

@@ -3,6 +3,7 @@ import { StyleSheet, Text, View } from "react-native";
 import EndTurnButton from "./EndTurnButton";
 import PauseButton from "./PauseButton";
 import PlayerList from "./PlayerList";
+import PropTypes from "prop-types";
 
 export default function TimerScreen(props) {
   const [playerArray, setPlayerArray] = useState([...props.playerInfo]);
@@ -94,6 +95,8 @@ export default function TimerScreen(props) {
     </View>
   );
 }
+
+TimerScreen.propTypes = { playerInfo: PropTypes.array };
 
 const styles = StyleSheet.create({
   container: {
