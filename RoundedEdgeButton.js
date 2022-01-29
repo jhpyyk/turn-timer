@@ -30,6 +30,6 @@ const styles = (style) =>
   });
 
 RoundedEdgeButton.propTypes = {
-  style: PropTypes.number,
-  children: PropTypes.object,
+  style: PropTypes.any,
+  children: PropTypes.any,
 };

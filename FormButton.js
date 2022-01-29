@@ -1,10 +1,10 @@
 import React, { useRef, useState, useEffect } from "react";
-import { StyleSheet } from "react-native";
+import { StyleSheet, View } from "react-native";
 import RoundedEdgeButton from "./RoundedEdgeButton";
 
 export default function FormButton(props) {
   return (
-    <RoundedEdgeButton style={styles.buttonStyle} {...props}>
+    <RoundedEdgeButton {...props} style={[styles.buttonStyle, props.style]}>
       {props.children}
     </RoundedEdgeButton>
   );

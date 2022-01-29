@@ -13,10 +13,10 @@ export default function AddPlayersScreen(props) {
   const [playerColor, setPlayerColor] = useState("");
   const [playerInfo, setPlayerInfo] = useState([]);
   const [isFieldsValid, setIsFieldsValid] = useState(false);
-  const [infoText, setInfoText] = useState(" ");
-  const isMinutesFieldValid = useNumberValidation(minutes);
-  const isSecondsFieldValid = useNumberValidation(seconds);
-  const isColorFieldValid = useColorValidation(playerColor);
+  const [isRequiredFieldEmpty, setIsRequiredFieldEmpty] = useState(true);
+  const isMinutesValid = useNumberValidation(minutes);
+  const isSecondsValid = useNumberValidation(seconds);
+  const isPlayerColorValid = useColorValidation(playerColor);
 
   const addPlayerHandle = () => {
     setPlayerInfo([
@@ -27,24 +27,28 @@ export default function AddPlayersScreen(props) {
         timeLeft: minutes * 60000 + seconds * 1000,
       },
     ]);
-    setInfoText("Player added");
     setPlayerName("");
     setPlayerColor("");
   };
 
   useEffect(() => {
-    setIsFieldsValid(
-      isMinutesFieldValid && isSecondsFieldValid && isColorFieldValid
+    setIsRequiredFieldEmpty(
+      (minutes.length == 0 && seconds.length == 0) || playerColor.length == 0
     );
-  }, [isMinutesFieldValid, isSecondsFieldValid, isColorFieldValid]);
+  }, [minutes, seconds, playerColor]);
 
   useEffect(() => {
-    if (!isMinutesFieldValid || !isSecondsFieldValid) {
-      setInfoText("Only numbers allowed");
-    } else {
-      setInfoText(" ");
-    }
-  }, [isMinutesFieldValid, isSecondsFieldValid]);
+    setIsFieldsValid(
+      (isMinutesValid || isSecondsValid) &&
+        isPlayerColorValid &&
+        !isRequiredFieldEmpty
+    );
+  }, [
+    isMinutesValid,
+    isPlayerColorValid,
+    isRequiredFieldEmpty,
+    isSecondsValid,
+  ]);
 
   return (
     <View style={styles.container}>
@@ -55,7 +59,7 @@ export default function AddPlayersScreen(props) {
           setMinutes(input);
         }}
         style={{
-          color: isMinutesFieldValid ? "white" : "red",
+          color: isMinutesValid || minutes.length == 0 ? "white" : "red",
         }}
       />
       <FormField
@@ -65,7 +69,7 @@ export default function AddPlayersScreen(props) {
           setSeconds(input);
         }}
         style={{
-          color: isSecondsFieldValid ? "white" : "red",
+          color: isSecondsValid || seconds.length == 0 ? "white" : "red",
         }}
       />
       <FormField
@@ -81,21 +85,24 @@ export default function AddPlayersScreen(props) {
         onChangeText={(input) => {
           setPlayerColor(input);
         }}
-        style={{ color: isColorFieldValid ? "white" : "red" }}
+        style={{
+          color:
+            isPlayerColorValid || playerColor.length == 0 ? "white" : "red",
+        }}
       />
-      <FormButton onPress={addPlayerHandle} disabled={!isFieldsValid}>
+      <FormButton
+        onPress={addPlayerHandle}
+        disabled={!isFieldsValid}
+        style={{ opacity: isFieldsValid ? 1 : 0.2 }}
+      >
         <Text style={{ color: "white" }}>{"Add player"}</Text>
       </FormButton>
-      <FormButton onPress={() => props.addPlayersDoneHandle(playerInfo)}>
+      <FormButton
+        onPress={() => props.addPlayersDoneHandle(playerInfo)}
+        style={{ opacity: playerInfo.length > 0 ? 1 : 0.2 }}
+      >
         <Text style={{ color: "white" }}>{"Done"}</Text>
       </FormButton>
-      <Text
-        style={{
-          color: isMinutesFieldValid && isSecondsFieldValid ? "white" : "red",
-        }}
-      >
-        {infoText}
-      </Text>
     </View>
   );
 }

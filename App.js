@@ -15,7 +15,7 @@ export default function App() {
 
   const addPlayersDoneHandle = (info) => {
     if (info.length > 0) {
-      setScreen(<TimerScreen playerInfo={testInfo} />);
+      setScreen(<TimerScreen playerInfo={info} />);
     }
   };
 
