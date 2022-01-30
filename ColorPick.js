@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Pressable, StyleSheet, View } from "react-native";
+import PropTypes from "prop-types";
 
-export default function ColorPick() {
+export default function ColorPick(props) {
   const colors = [
     "#607D8B",
     "#9E9E9E",
@@ -26,10 +27,13 @@ export default function ColorPick() {
     <Pressable
       key={index}
       style={[styles.colorCube, { backgroundColor: cubeColor }]}
+      onPress={() => props.colorCubePressed(colors[index])}
     />
   ));
   return <View style={styles.container}>{colorCubes}</View>;
 }
+
+ColorPick.propTypes = { colorCubePressed: PropTypes.func };
 
 const styles = StyleSheet.create({
   container: {

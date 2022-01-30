@@ -5,6 +5,7 @@ import FormField from "./FormField";
 import PropTypes from "prop-types";
 import useNumberValidation from "./UseNumberValidation";
 import useColorValidation from "./UseColorValidation";
+import ColorPick from "./ColorPick";
 
 export default function AddPlayersForm(props) {
   const [playerInfo, setPlayerInfo] = useState([]);
@@ -29,6 +30,10 @@ export default function AddPlayersForm(props) {
     ]);
     setPlayerName("");
     setPlayerColor("");
+  };
+
+  const colorCubePressed = (color) => {
+    setPlayerColor(color);
   };
 
   useEffect(() => {
@@ -87,6 +92,7 @@ export default function AddPlayersForm(props) {
           color: isPlayerColorValid || isPlayerColorEmpty ? "white" : "red",
         }}
       />
+      <ColorPick colorCubePressed={colorCubePressed} />
       <FormButton
         onPress={addPlayerHandle}
         disabled={!isFieldsValid}
