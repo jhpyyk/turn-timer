@@ -1,6 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import React, { useEffect, useState } from "react";
-import { View } from "react-native";
+import { View, StyleSheet } from "react-native";
 import AddPlayersForm from "./AddPlayersForm.js";
 import TimerScreen from "./TimerScreen.js";
 
@@ -18,9 +18,19 @@ export default function App() {
   }, []);
 
   return (
-    <View style={{ flex: 1 }}>
+    <View style={styles.container}>
       <StatusBar style="light" />
       {screen}
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    display: "flex",
+    flex: 1,
+    backgroundColor: "#1C2833",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+});

@@ -7,8 +7,8 @@ export default function FormField(props) {
     <TextInput
       {...props}
       style={[styles.input, props.style]}
-      placeholderTextColor="grey"
-      maxLength="20"
+      placeholderTextColor={"grey"}
+      maxLength={20}
     />
   );
 }

@@ -9,7 +9,7 @@ export default function EndTurnButton(props) {
       style={[styles.buttonStyle, { borderColor: props.color }]}
       android_ripple={{
         foreground: true,
-        color: "black",
+        color: props.color,
         radius: 150,
       }}
     >

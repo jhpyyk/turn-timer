@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, StyleSheet, Text } from "react-native";
+import { View, Text } from "react-native";
 import FormButton from "./FormButton";
 import FormField from "./FormField";
 import PropTypes from "prop-types";
@@ -54,7 +54,7 @@ export default function AddPlayersForm(props) {
   ]);
 
   return (
-    <View style={styles.container}>
+    <View style={{ marginTop: 50 }}>
       <FormField
         placeholder={"Minutes"}
         value={minutes}
@@ -64,6 +64,7 @@ export default function AddPlayersForm(props) {
         style={{
           color: isMinutesValid || isMinutesEmpty ? "white" : "red",
         }}
+        keyboardType={"numeric"}
       />
       <FormField
         placeholder={"Seconds"}
@@ -74,6 +75,7 @@ export default function AddPlayersForm(props) {
         style={{
           color: isSecondsValid || isSecondsEmpty ? "white" : "red",
         }}
+        keyboardType={"numeric"}
       />
       <FormField
         placeholder={"Name"}
@@ -111,13 +113,3 @@ export default function AddPlayersForm(props) {
 }
 
 AddPlayersForm.propTypes = { addPlayersDoneHandle: PropTypes.func };
-
-const styles = StyleSheet.create({
-  container: {
-    display: "flex",
-    flex: 1,
-    backgroundColor: "#1C2833",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
