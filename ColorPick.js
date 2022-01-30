@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { Pressable, StyleSheet, View } from "react-native";
 import PropTypes from "prop-types";
 
 export default function ColorPick(props) {
+  const [selected, setSelected] = useState(null);
   const colors = [
     "#607D8B",
     "#9E9E9E",
@@ -23,11 +24,21 @@ export default function ColorPick(props) {
     "#E91E63",
     "#F44336",
   ];
+
+  const cubePressHandle = (index) => {
+    props.colorCubePressed(colors[index]);
+    setSelected(index);
+  };
+
   const colorCubes = colors.map((cubeColor, index) => (
     <Pressable
       key={index}
-      style={[styles.colorCube, { backgroundColor: cubeColor }]}
-      onPress={() => props.colorCubePressed(colors[index])}
+      style={[
+        styles.colorCube,
+        { backgroundColor: cubeColor },
+        index == selected ? { borderColor: "white", borderWidth: 2 } : {},
+      ]}
+      onPress={() => cubePressHandle(index)}
     />
   ));
   return <View style={styles.container}>{colorCubes}</View>;
@@ -49,5 +60,6 @@ const styles = StyleSheet.create({
     height: 22,
     borderRadius: 3,
     margin: 5,
+    padding: 5,
   },
 });
