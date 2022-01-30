@@ -1,38 +1,19 @@
-import React, { useState, useEffect } from "react";
-import { Pressable, StyleSheet, Text } from "react-native";
-import TimeDisplay from "./TimeDisplay";
+import React from "react";
+import { Pressable, StyleSheet } from "react-native";
+import PropTypes from "prop-types";
 
 export default function EndTurnButton(props) {
-  const [buttonText, setButtonText] = useState("Start");
-
-  const handlePress = () => {
-    if (props.isTimerRunning()) {
-      props.endTurn();
-    } else {
-      props.timerStart();
-    }
-  };
-
-  useEffect(() => {
-    if (props.isTimerRunning()) {
-      setButtonText("End turn");
-    } else {
-      setButtonText("Start");
-    }
-  });
-
   return (
     <Pressable
+      {...props}
       style={[styles.buttonStyle, { borderColor: props.color }]}
-      onPress={handlePress}
       android_ripple={{
         foreground: true,
         color: "black",
         radius: 150,
       }}
     >
-      <Text style={{ color: "white", fontSize: 20 }}>{buttonText}</Text>
-      <TimeDisplay timeToDisplay={props.timeToDisplay} fontSize={40} />
+      {props.children}
     </Pressable>
   );
 }
@@ -48,3 +29,8 @@ const styles = StyleSheet.create({
     borderWidth: 6,
   },
 });
+
+EndTurnButton.propTypes = {
+  color: PropTypes.string,
+  children: PropTypes.array,
+};
