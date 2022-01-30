@@ -11,7 +11,7 @@ export default function PlayerDisplay(props) {
         onPress={() => props.changePlayerIndex(props.id)}
       >
         <Text style={{ color: "white", fontSize: 18 }}>
-          {props.name + ":   "}
+          {props.name.length == 0 ? "" : props.name + ":   "}
         </Text>
         <TimeDisplay timeToDisplay={props.timeToDisplay} fontSize={18} />
       </Pressable>

@@ -21,7 +21,7 @@ export default function TimeDisplay(props) {
 
   useEffect(() => {
     setUiTime(formatTime(props.timeToDisplay));
-  });
+  }, [props.timeToDisplay]);
 
   return (
     <Text style={{ color: "white", fontSize: props.fontSize }}>{uiTime}</Text>
