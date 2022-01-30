@@ -59,6 +59,14 @@ export default function TimerScreen(props) {
         </Text>
         <TimeDisplay timeToDisplay={playerTime} fontSize={40} />
       </EndTurnButton>
+      <PauseButton
+        onPress={timerStop}
+        style={{
+          borderColor: playerArray[playerIndex].color,
+          opacity: isTimerRunning ? 1 : 0.2,
+        }}
+        disabled={!isTimerRunning}
+      />
     </View>
   );
 }

@@ -1,6 +1,7 @@
-import React, { useRef, useState, useEffect } from "react";
-import { StyleSheet, View } from "react-native";
+import React from "react";
+import { StyleSheet } from "react-native";
 import RoundedEdgeButton from "./RoundedEdgeButton";
+import PropTypes from "prop-types";
 
 export default function FormButton(props) {
   return (
@@ -19,3 +20,5 @@ const styles = StyleSheet.create({
     margin: 10,
   },
 });
+
+FormButton.propTypes = { style: PropTypes.object, children: PropTypes.object };
