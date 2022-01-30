@@ -1,17 +1,14 @@
 import React from "react";
 import { Pressable, StyleSheet, View, Text } from "react-native";
 import TimeDisplay from "./TimeDisplay";
+import PropTypes from "prop-types";
 
 export default function PlayerDisplay(props) {
-  const handlePress = () => {
-    props.changePlayerIndex(props.id);
-  };
-
   return (
     <View style={{ opacity: props.buttonOpacity }}>
       <Pressable
         style={[styles.buttonStyle, { borderColor: props.color }]}
-        onPress={handlePress}
+        onPress={() => props.changePlayerIndex(props.id)}
       >
         <Text style={{ color: "white", fontSize: 18 }}>
           {props.name + ":   "}
@@ -34,3 +31,12 @@ const styles = StyleSheet.create({
     borderWidth: 3,
   },
 });
+
+PlayerDisplay.propTypes = {
+  buttonOpacity: PropTypes.number,
+  changePlayerIndex: PropTypes.func,
+  color: PropTypes.string,
+  timeToDisplay: PropTypes.number,
+  name: PropTypes.string,
+  id: PropTypes.number,
+};
