@@ -13,7 +13,7 @@ export default function FormButton(props) {
 
 const styles = StyleSheet.create({
   buttonStyle: {
-    width: 200,
+    width: 300,
     height: 40,
     backgroundColor: "darkcyan",
     borderColor: "white",

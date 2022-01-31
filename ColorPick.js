@@ -48,7 +48,7 @@ ColorPick.propTypes = { colorCubePressed: PropTypes.func };
 
 const styles = StyleSheet.create({
   container: {
-    width: 200,
+    width: 300,
     display: "flex",
     flexDirection: "row",
     flexWrap: "wrap",
@@ -56,8 +56,8 @@ const styles = StyleSheet.create({
     margin: 10,
   },
   colorCube: {
-    width: 22,
-    height: 22,
+    width: 40,
+    height: 40,
     borderRadius: 3,
     margin: 5,
     padding: 5,

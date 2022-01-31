@@ -54,7 +54,7 @@ export default function AddPlayersForm(props) {
   ]);
 
   return (
-    <View style={{ marginTop: 50 }}>
+    <View>
       <FormField
         placeholder={"Minutes"}
         value={minutes}

@@ -17,8 +17,8 @@ FormField.propTypes = { style: PropTypes.object };
 
 const styles = StyleSheet.create({
   input: {
-    width: 200,
-    height: 40,
+    width: 300,
+    height: 50,
     margin: 10,
     padding: 10,
     color: "white",
