@@ -30,9 +30,14 @@ export default function TimerScreen(props) {
   };
 
   const changePlayerIndex = (index) => {
-    timerStop();
-    savePlayerTime();
-    setPlayerIndex(index);
+    if (playerIndex != index) {
+      if (isTimerRunning) {
+        savePlayerTime();
+        console.log("save");
+      }
+      timerStop();
+      setPlayerIndex(index);
+    }
   };
 
   const savePlayerTime = () => {

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 export default function useTimer(time, playerIndex) {
-  const [playerTime, setPlayerTime] = useState(null);
+  const [playerTime, setPlayerTime] = useState(time);
   const [isTimerRunning, setIsTimerRunning] = useState(false);
   const [startingTime, setStartingTime] = useState(Date.now());
   let timeStamp;
