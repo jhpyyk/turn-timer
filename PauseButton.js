@@ -10,6 +10,7 @@ export default function PauseButton(props) {
       style={[
         styles.buttonStyle,
         { borderColor: props.color, backgroundColor: props.color + "22" },
+        props.style,
       ]}
     >
       <Text style={{ color: "white" }}>{"Pause"}</Text>
@@ -25,4 +26,4 @@ const styles = StyleSheet.create({
   },
 });
 
-PauseButton.propTypes = { color: PropTypes.string };
+PauseButton.propTypes = { color: PropTypes.string, style: PropTypes.object };
