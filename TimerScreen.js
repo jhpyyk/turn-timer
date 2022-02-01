@@ -7,6 +7,8 @@ import PropTypes from "prop-types";
 import useTimer from "./UseTimer";
 import TimeDisplay from "./TimeDisplay";
 import HelpButton from "./HelpButton";
+import HelpModal from "./HelpModal";
+import TimerHelpText from "./TimerHelpText";
 
 export default function TimerScreen(props) {
   const [playerArray, setPlayerArray] = useState([...props.playerInfo]);
@@ -16,6 +18,7 @@ export default function TimerScreen(props) {
     playerIndex,
     savePlayerTime
   );
+  const [isHelpVisible, setIsHelpVisible] = useState(false);
 
   const endTurn = () => {
     savePlayerTime();
@@ -44,6 +47,13 @@ export default function TimerScreen(props) {
 
   return (
     <View style={{ alignSelf: "stretch" }}>
+      <HelpModal
+        closeHelp={setIsHelpVisible}
+        onRequestClose={() => setIsHelpVisible(false)}
+        visible={isHelpVisible}
+      >
+        <TimerHelpText />
+      </HelpModal>
       <ScrollView contentContainerStyle={styles.container}>
         <PlayerList
           playerArray={playerArray}
@@ -75,6 +85,7 @@ export default function TimerScreen(props) {
             backgroundColor: playerArray[playerIndex].color + "22",
           }}
           textColor={playerArray[playerIndex].color}
+          onPress={() => setIsHelpVisible()}
         />
       </ScrollView>
     </View>

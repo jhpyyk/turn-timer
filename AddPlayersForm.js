@@ -6,8 +6,9 @@ import PropTypes from "prop-types";
 import useNumberValidation from "./UseNumberValidation";
 import useColorValidation from "./UseColorValidation";
 import ColorPick from "./ColorPick";
-import FormHelp from "./FormHelp";
+import HelpModal from "./HelpModal";
 import HelpButton from "./HelpButton";
+import FormHelpText from "./FormHelpText";
 
 export default function AddPlayersForm(props) {
   const [playerInfo, setPlayerInfo] = useState([]);
@@ -58,12 +59,13 @@ export default function AddPlayersForm(props) {
 
   return (
     <View>
-      <FormHelp
+      <HelpModal
         closeHelp={setIsHelpVisible}
         onRequestClose={() => setIsHelpVisible(false)}
-        animationType={"fade"}
         visible={isHelpVisible}
-      />
+      >
+        <FormHelpText />
+      </HelpModal>
       <FormField
         placeholder={"Minutes"}
         value={minutes}

@@ -1,15 +1,12 @@
 import React from "react";
 import { View, Modal, StyleSheet, Pressable } from "react-native";
-import FormInfoText from "./FormHelpText.js";
 import PropTypes from "prop-types";
 
-export default function FormHelp(props) {
+export default function HelpModal(props) {
   return (
-    <Modal transparent={true} {...props}>
+    <Modal animationType={"fade"} transparent={true} {...props}>
       <Pressable onPress={() => props.closeHelp(false)} style={styles.modal}>
-        <View style={styles.box}>
-          <FormInfoText />
-        </View>
+        <View style={styles.box}>{props.children}</View>
       </Pressable>
     </Modal>
   );
@@ -34,4 +31,4 @@ const styles = StyleSheet.create({
   },
 });
 
-FormHelp.propTypes = { closeHelp: PropTypes.func };
+HelpModal.propTypes = { closeHelp: PropTypes.func, children: PropTypes.object };
