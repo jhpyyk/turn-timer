@@ -26,4 +26,4 @@ const styles = StyleSheet.create({
   },
 });
 
-HelpButton.propTypes = { color: PropTypes.string, style: PropTypes.object };
+HelpButton.propTypes = { textColor: PropTypes.string, style: PropTypes.object };

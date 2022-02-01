@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Modal, StyleSheet, Pressable } from "react-native";
-import FormInfoText from "./FormInfoText.js";
+import FormInfoText from "./FormHelpText.js";
 import PropTypes from "prop-types";
 
 export default function FormHelp(props) {
