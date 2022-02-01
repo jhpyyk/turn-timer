@@ -5,7 +5,13 @@ import PropTypes from "prop-types";
 
 export default function PauseButton(props) {
   return (
-    <RoundedEdgeButton {...props} style={[styles.buttonStyle, props.style]}>
+    <RoundedEdgeButton
+      {...props}
+      style={[
+        styles.buttonStyle,
+        { borderColor: props.color, backgroundColor: props.color + "22" },
+      ]}
+    >
       <Text style={{ color: "white" }}>{"Pause"}</Text>
     </RoundedEdgeButton>
   );
@@ -19,4 +25,4 @@ const styles = StyleSheet.create({
   },
 });
 
-PauseButton.propTypes = { style: PropTypes.object };
+PauseButton.propTypes = { color: PropTypes.string };

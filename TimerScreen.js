@@ -62,8 +62,8 @@ export default function TimerScreen(props) {
         </EndTurnButton>
         <PauseButton
           onPress={timerStop}
+          color={playerArray[playerIndex].color}
           style={{
-            borderColor: playerArray[playerIndex].color,
             opacity: isTimerRunning ? 1 : 0.2,
           }}
           disabled={!isTimerRunning}

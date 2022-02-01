@@ -6,7 +6,10 @@ export default function EndTurnButton(props) {
   return (
     <Pressable
       {...props}
-      style={[styles.buttonStyle, { borderColor: props.color }]}
+      style={[
+        styles.buttonStyle,
+        { borderColor: props.color, backgroundColor: props.color + "22" },
+      ]}
       android_ripple={{
         foreground: true,
         color: props.color,
@@ -20,8 +23,8 @@ export default function EndTurnButton(props) {
 
 const styles = StyleSheet.create({
   buttonStyle: {
-    width: 250,
-    height: 250,
+    width: 300,
+    height: 300,
     justifyContent: "center",
     alignItems: "center",
     margin: 10,

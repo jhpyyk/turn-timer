@@ -7,7 +7,10 @@ export default function PlayerDisplay(props) {
   return (
     <View style={{ opacity: props.buttonOpacity }}>
       <Pressable
-        style={[styles.buttonStyle, { borderColor: props.color }]}
+        style={[
+          styles.buttonStyle,
+          { borderColor: props.color, backgroundColor: props.color + "22" },
+        ]}
         onPress={() => props.changePlayerIndex(props.id)}
       >
         <Text style={{ color: "white", fontSize: 18 }}>
