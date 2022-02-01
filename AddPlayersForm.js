@@ -6,6 +6,7 @@ import PropTypes from "prop-types";
 import useNumberValidation from "./UseNumberValidation";
 import useColorValidation from "./UseColorValidation";
 import ColorPick from "./ColorPick";
+import FormHelp from "./FormHelp";
 
 export default function AddPlayersForm(props) {
   const [playerInfo, setPlayerInfo] = useState([]);
@@ -18,6 +19,7 @@ export default function AddPlayersForm(props) {
   const [isSecondsValid, isSecondsEmpty] = useNumberValidation(seconds);
   const [isPlayerColorValid, isPlayerColorEmpty] =
     useColorValidation(playerColor);
+  const [isHelpVisible, setIsHelpVisible] = useState(true);
 
   const addPlayerHandle = () => {
     setPlayerInfo([
@@ -55,6 +57,7 @@ export default function AddPlayersForm(props) {
 
   return (
     <View>
+      <FormHelp visible={isHelpVisible} />
       <FormField
         placeholder={"Minutes"}
         value={minutes}
