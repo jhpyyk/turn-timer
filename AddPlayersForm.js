@@ -7,6 +7,7 @@ import useNumberValidation from "./UseNumberValidation";
 import useColorValidation from "./UseColorValidation";
 import ColorPick from "./ColorPick";
 import FormHelp from "./FormHelp";
+import HelpButton from "./HelpButton";
 
 export default function AddPlayersForm(props) {
   const [playerInfo, setPlayerInfo] = useState([]);
@@ -19,7 +20,7 @@ export default function AddPlayersForm(props) {
   const [isSecondsValid, isSecondsEmpty] = useNumberValidation(seconds);
   const [isPlayerColorValid, isPlayerColorEmpty] =
     useColorValidation(playerColor);
-  const [isHelpVisible, setIsHelpVisible] = useState(true);
+  const [isHelpVisible, setIsHelpVisible] = useState(false);
 
   const addPlayerHandle = () => {
     setPlayerInfo([
@@ -56,8 +57,14 @@ export default function AddPlayersForm(props) {
   ]);
 
   return (
-    <View>
-      <FormHelp visible={isHelpVisible} />
+    <View style={{ paddingTop: 36 }}>
+      <HelpButton onPress={() => setIsHelpVisible()} />
+      <FormHelp
+        closeHelp={setIsHelpVisible}
+        onRequestClose={() => setIsHelpVisible(false)}
+        animationType={"fade"}
+        visible={isHelpVisible}
+      />
       <FormField
         placeholder={"Minutes"}
         value={minutes}
