@@ -22,7 +22,7 @@ export default function PlayerDisplay(props) {
 const styles = StyleSheet.create({
   buttonStyle: {
     flexDirection: "row",
-    width: 200,
+    width: 230,
     height: 40,
     justifyContent: "center",
     alignItems: "center",

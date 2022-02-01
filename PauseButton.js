@@ -13,7 +13,7 @@ export default function PauseButton(props) {
 
 const styles = StyleSheet.create({
   buttonStyle: {
-    width: 200,
+    width: 230,
     height: 40,
     margin: 10,
   },

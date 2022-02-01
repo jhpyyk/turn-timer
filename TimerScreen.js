@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { ScrollView, StyleSheet, Text, View } from "react-native";
 import EndTurnButton from "./EndTurnButton";
 import PauseButton from "./PauseButton";
 import PlayerList from "./PlayerList";
@@ -42,31 +42,33 @@ export default function TimerScreen(props) {
   };
 
   return (
-    <View style={styles.container}>
-      <PlayerList
-        playerArray={playerArray}
-        timeToDisplay={playerTime}
-        playerIndex={playerIndex}
-        changePlayerIndex={changePlayerIndex}
-      />
-      <EndTurnButton
-        timeToDisplay={playerTime}
-        color={playerArray[playerIndex].color}
-        onPress={isTimerRunning ? endTurn : timerStart}
-      >
-        <Text style={{ color: "white", fontSize: 20 }}>
-          {isTimerRunning ? "End turn" : "Start"}
-        </Text>
-        <TimeDisplay timeToDisplay={playerTime} fontSize={40} />
-      </EndTurnButton>
-      <PauseButton
-        onPress={timerStop}
-        style={{
-          borderColor: playerArray[playerIndex].color,
-          opacity: isTimerRunning ? 1 : 0.2,
-        }}
-        disabled={!isTimerRunning}
-      />
+    <View style={{ alignSelf: "stretch" }}>
+      <ScrollView contentContainerStyle={styles.container}>
+        <PlayerList
+          playerArray={playerArray}
+          timeToDisplay={playerTime}
+          playerIndex={playerIndex}
+          changePlayerIndex={changePlayerIndex}
+        />
+        <EndTurnButton
+          timeToDisplay={playerTime}
+          color={playerArray[playerIndex].color}
+          onPress={isTimerRunning ? endTurn : timerStart}
+        >
+          <Text style={{ color: "white", fontSize: 20 }}>
+            {isTimerRunning ? "End turn" : "Start"}
+          </Text>
+          <TimeDisplay timeToDisplay={playerTime} fontSize={40} />
+        </EndTurnButton>
+        <PauseButton
+          onPress={timerStop}
+          style={{
+            borderColor: playerArray[playerIndex].color,
+            opacity: isTimerRunning ? 1 : 0.2,
+          }}
+          disabled={!isTimerRunning}
+        />
+      </ScrollView>
     </View>
   );
 }
@@ -75,10 +77,9 @@ TimerScreen.propTypes = { playerInfo: PropTypes.array };
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: "#1C2833",
+    flexGrow: 1,
     alignItems: "center",
     justifyContent: "center",
-    padding: 50,
+    paddingVertical: 80,
   },
 });

@@ -20,11 +20,11 @@ export default function EndTurnButton(props) {
 
 const styles = StyleSheet.create({
   buttonStyle: {
-    width: 300,
-    height: 300,
+    width: 250,
+    height: 250,
     justifyContent: "center",
     alignItems: "center",
-    margin: 20,
+    margin: 10,
     borderRadius: 150,
     borderWidth: 6,
   },
