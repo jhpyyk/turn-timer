@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { View, Text } from "react-native";
 import FormButton from "./FormButton";
 import FormField from "./FormField";
@@ -22,6 +22,8 @@ export default function AddPlayersForm(props) {
   const [isPlayerColorValid, isPlayerColorEmpty] =
     useColorValidation(playerColor);
   const [isHelpVisible, setIsHelpVisible] = useState(false);
+  const secondsFieldRef = useRef();
+  const playerNameFieldRef = useRef();
 
   const addPlayerHandle = () => {
     setPlayerInfo([
@@ -34,6 +36,7 @@ export default function AddPlayersForm(props) {
     ]);
     setPlayerName("");
     setPlayerColor("");
+    playerNameFieldRef.current.focus();
   };
 
   const colorCubePressed = (color) => {
@@ -76,8 +79,10 @@ export default function AddPlayersForm(props) {
           color: isMinutesValid || isMinutesEmpty ? "white" : "red",
         }}
         keyboardType={"numeric"}
+        onSubmitEditing={() => secondsFieldRef.current.focus()}
       />
       <FormField
+        ref={secondsFieldRef}
         placeholder={"Seconds"}
         value={seconds}
         onChangeText={(input) => {
@@ -87,13 +92,17 @@ export default function AddPlayersForm(props) {
           color: isSecondsValid || isSecondsEmpty ? "white" : "red",
         }}
         keyboardType={"numeric"}
+        onSubmitEditing={() => playerNameFieldRef.current.focus()}
       />
       <FormField
+        ref={playerNameFieldRef}
         placeholder={"Name"}
         value={playerName}
         onChangeText={(input) => {
           setPlayerName(input);
         }}
+        returnKeyType={"done"}
+        blurOnSubmit={true}
       />
       <FormField
         placeholder={"Color"}
@@ -104,6 +113,8 @@ export default function AddPlayersForm(props) {
         style={{
           color: isPlayerColorValid || isPlayerColorEmpty ? "white" : "red",
         }}
+        returnKeyType={"done"}
+        blurOnSubmit={true}
       />
       <ColorPick colorCubePressed={colorCubePressed} />
       <FormButton

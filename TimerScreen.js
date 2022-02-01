@@ -33,7 +33,6 @@ export default function TimerScreen(props) {
     if (playerIndex != index) {
       if (isTimerRunning) {
         savePlayerTime();
-        console.log("save");
       }
       timerStop();
       setPlayerIndex(index);

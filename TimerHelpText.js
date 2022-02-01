@@ -16,7 +16,9 @@ export default function TimerHelpText() {
       </WhiteText>
       <WhiteText>Juuso Pyykkönen</WhiteText>
       <WhiteText> </WhiteText>
-      <WhiteText style={{ fontWeight: "bold", fontSize: 16 }}>GitHub</WhiteText>
+      <WhiteText style={{ fontWeight: "bold", fontSize: 16 }}>
+        GitHub Repository:
+      </WhiteText>
       <WhiteText>github.com/jhpyyk/turn-timer</WhiteText>
     </View>
   );

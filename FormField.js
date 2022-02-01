@@ -2,16 +2,21 @@ import React from "react";
 import { StyleSheet, TextInput } from "react-native";
 import PropTypes from "prop-types";
 
-export default function FormField(props) {
+const FormField = (props, ref) => {
   return (
     <TextInput
+      returnKeyType={"next"}
+      blurOnSubmit={false}
       {...props}
+      ref={ref}
       style={[styles.input, props.style]}
       placeholderTextColor={"grey"}
       maxLength={20}
     />
   );
-}
+};
+
+export default React.forwardRef(FormField);
 
 FormField.propTypes = { style: PropTypes.object };
 
