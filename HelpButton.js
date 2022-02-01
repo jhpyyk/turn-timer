@@ -1,11 +1,15 @@
 import React from "react";
-import { Pressable, StyleSheet } from "react-native";
-import WhiteText from "./WhiteText";
+import { Pressable, StyleSheet, Text } from "react-native";
+import PropTypes from "prop-types";
 
 export default function HelpButton(props) {
   return (
-    <Pressable style={styles.buttonStyle} {...props}>
-      <WhiteText style={{ fontSize: 20, fontWeight: "bold" }}>{"?"}</WhiteText>
+    <Pressable {...props} style={[styles.buttonStyle, props.style]}>
+      <Text
+        style={{ fontSize: 20, fontWeight: "bold", color: props.textColor }}
+      >
+        {"?"}
+      </Text>
     </Pressable>
   );
 }
@@ -18,10 +22,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     borderRadius: 18,
     borderWidth: 2,
-    borderColor: "white",
-    backgroundColor: "darkcyan",
-    position: "absolute",
-    right: 9,
-    top: 0,
+    margin: 5,
   },
 });
+
+HelpButton.propTypes = { color: PropTypes.string, style: PropTypes.object };

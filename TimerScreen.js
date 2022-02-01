@@ -6,6 +6,7 @@ import PlayerList from "./PlayerList";
 import PropTypes from "prop-types";
 import useTimer from "./UseTimer";
 import TimeDisplay from "./TimeDisplay";
+import HelpButton from "./HelpButton";
 
 export default function TimerScreen(props) {
   const [playerArray, setPlayerArray] = useState([...props.playerInfo]);
@@ -67,6 +68,13 @@ export default function TimerScreen(props) {
             opacity: isTimerRunning ? 1 : 0.2,
           }}
           disabled={!isTimerRunning}
+        />
+        <HelpButton
+          style={{
+            borderColor: playerArray[playerIndex].color,
+            backgroundColor: playerArray[playerIndex].color + "22",
+          }}
+          textColor={playerArray[playerIndex].color}
         />
       </ScrollView>
     </View>
