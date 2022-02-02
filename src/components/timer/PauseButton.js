@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, Text } from "react-native";
-import RoundedEdgeButton from "./RoundedEdgeButton";
 import PropTypes from "prop-types";
+import RoundedEdgeButton from "../common/RoundedEdgeButton";
 
 export default function PauseButton(props) {
   return (

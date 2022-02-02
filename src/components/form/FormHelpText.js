@@ -1,6 +1,6 @@
 import React from "react";
 import { View } from "react-native";
-import WhiteText from "./WhiteText";
+import WhiteText from "../common/WhiteText";
 
 export default function FormInfoText() {
   return (

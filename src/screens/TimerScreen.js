@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
-import EndTurnButton from "./EndTurnButton";
-import PauseButton from "./PauseButton";
-import PlayerList from "./PlayerList";
 import PropTypes from "prop-types";
-import useTimer from "./UseTimer";
-import TimeDisplay from "./TimeDisplay";
-import HelpButton from "./HelpButton";
-import HelpModal from "./HelpModal";
-import TimerHelpText from "./TimerHelpText";
+import EndTurnButton from "../components/timer/EndTurnButton";
+import PauseButton from "../components/timer/PauseButton";
+import PlayerList from "../components/timer/PlayerList";
+import TimerHelpText from "../components/timer/TimerHelpText";
+import TimeDisplay from "../components/timer/TimeDisplay";
+import HelpButton from "../components/common/HelpButton";
+import HelpModal from "../components/common/HelpModal";
+import useTimer from "../hooks/UseTimer";
 
 export default function TimerScreen(props) {
   const [playerArray, setPlayerArray] = useState([...props.playerInfo]);

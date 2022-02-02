@@ -1,7 +1,7 @@
 import React from "react";
 import { Pressable, StyleSheet, View, Text } from "react-native";
-import TimeDisplay from "./TimeDisplay";
 import PropTypes from "prop-types";
+import TimeDisplay from "./TimeDisplay";
 
 export default function PlayerDisplay(props) {
   return (

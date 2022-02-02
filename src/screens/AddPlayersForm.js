@@ -1,14 +1,14 @@
 import React, { useState, useEffect, useRef } from "react";
 import { View, Text } from "react-native";
-import FormButton from "./FormButton";
-import FormField from "./FormField";
 import PropTypes from "prop-types";
-import useNumberValidation from "./UseNumberValidation";
-import useColorValidation from "./UseColorValidation";
-import ColorPick from "./ColorPick";
-import HelpModal from "./HelpModal";
-import HelpButton from "./HelpButton";
-import FormHelpText from "./FormHelpText";
+import FormButton from "../components/form/FormButton";
+import FormField from "../components/form/FormField";
+import FormHelpText from "../components/form/FormHelpText";
+import ColorPick from "../components/form/ColorPick";
+import HelpModal from "../components/common/HelpModal";
+import HelpButton from "../components/common/HelpButton";
+import useNumberValidation from "../hooks/UseNumberValidation";
+import useColorValidation from "../hooks/UseColorValidation";
 
 export default function AddPlayersForm(props) {
   const [playerInfo, setPlayerInfo] = useState([]);
