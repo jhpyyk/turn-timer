@@ -5,24 +5,24 @@ import PropTypes from "prop-types";
 export default function ColorPick(props) {
   const [selected, setSelected] = useState(null);
   const colors = [
-    "#FF5722",
-    "#F44336",
+    "#FF1222",
     "#E91E63",
     "#9C27B0",
     "#673AB7",
     "#3F51B5",
-    "#2196F3",
+    "#2150FF",
     "#03A9F4",
-    "#00BCD4",
-    "#009688",
-    "#4CAF50",
+    "#00DCD4",
+    "#20AA50",
+    "#0CCF00",
     "#FFEB3B",
-    "#FFC107",
-    "#FF9800",
-    "#795548",
+    "#FFB977",
+    "#FF7799",
+    "#FF7700",
+    "#674432",
+    "#000000",
     "#607D8B",
-    "#EEEEEE",
-    "#111111",
+    "#FFFFFF",
   ];
 
   const cubePressHandle = (index) => {
