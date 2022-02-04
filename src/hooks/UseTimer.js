@@ -4,7 +4,6 @@ export default function useTimer(time, playerIndex) {
   const [playerTime, setPlayerTime] = useState(time);
   const [isTimerRunning, setIsTimerRunning] = useState(false);
   const [startingTime, setStartingTime] = useState(Date.now());
-  let timeStamp;
 
   const timerStart = () => {
     setStartingTime(Date.now());
@@ -19,8 +18,7 @@ export default function useTimer(time, playerIndex) {
     return calculateTimeLeft();
   };
 
-  const calculateTimeLeft = () => {
-    timeStamp = Date.now();
+  const calculateTimeLeft = (timeStamp) => {
     let timeElapsed = timeStamp - startingTime;
     return playerTime - timeElapsed;
   };
@@ -35,7 +33,8 @@ export default function useTimer(time, playerIndex) {
       return () => clearTimeout(tick);
     }
     const tick = setTimeout(() => {
-      setPlayerTime(calculateTimeLeft());
+      let timeStamp = Date.now();
+      setPlayerTime(calculateTimeLeft(timeStamp));
       setStartingTime(timeStamp);
     }, 50);
 
