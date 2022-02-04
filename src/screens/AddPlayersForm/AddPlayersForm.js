@@ -62,6 +62,15 @@ export default function AddPlayersForm(props) {
 
   return (
     <View>
+      <HelpButton
+        style={{
+          left: 270,
+          borderColor: "white",
+          backgroundColor: "darkcyan",
+        }}
+        textColor={"white"}
+        onPress={() => setIsHelpVisible()}
+      />
       <HelpModal
         closeHelp={setIsHelpVisible}
         onRequestClose={() => setIsHelpVisible(false)}
@@ -130,15 +139,6 @@ export default function AddPlayersForm(props) {
       >
         <Text style={{ color: "white" }}>{"Done"}</Text>
       </FormButton>
-      <HelpButton
-        style={{
-          alignSelf: "center",
-          borderColor: "white",
-          backgroundColor: "darkcyan",
-        }}
-        textColor={"white"}
-        onPress={() => setIsHelpVisible()}
-      />
     </View>
   );
 }

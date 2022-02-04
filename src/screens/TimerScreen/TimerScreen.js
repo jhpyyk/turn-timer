@@ -60,6 +60,16 @@ export default function TimerScreen(props) {
         <TimerHelpText />
       </HelpModal>
       <ScrollView contentContainerStyle={styles.container}>
+        <HelpButton
+          style={{
+            borderColor: playerArray[playerIndex].color,
+            backgroundColor: playerArray[playerIndex].color + "22",
+            left: 150,
+            bottom: 20,
+          }}
+          textColor={playerArray[playerIndex].color}
+          onPress={() => setIsHelpVisible()}
+        />
         <PlayerList
           playerArray={playerArray}
           timeToDisplay={playerTime}
@@ -83,14 +93,6 @@ export default function TimerScreen(props) {
             opacity: isTimerRunning ? 1 : 0.2,
           }}
           disabled={!isTimerRunning}
-        />
-        <HelpButton
-          style={{
-            borderColor: playerArray[playerIndex].color,
-            backgroundColor: playerArray[playerIndex].color + "22",
-          }}
-          textColor={playerArray[playerIndex].color}
-          onPress={() => setIsHelpVisible()}
         />
       </ScrollView>
     </View>
