@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import RoundedEdgeButton from "../../common/RoundedCornersButton/RoundedCornersButton";
 import styles from "./PauseButtonStyles";
 
+// Adding number 22 adjusts alpha channel of the color i.e. makes the background color semi-transparent
 export default function PauseButton(props) {
   return (
     <RoundedEdgeButton

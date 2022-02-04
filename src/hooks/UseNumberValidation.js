@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 
+// Returns isValid == true if str is a digit
 export default function useNumberValidation(str) {
   const [isValid, setIsValid] = useState(null);
   const [isEmpty, setIsEmpty] = useState(null);

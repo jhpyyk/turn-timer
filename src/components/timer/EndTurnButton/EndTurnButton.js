@@ -3,6 +3,7 @@ import { Pressable } from "react-native";
 import PropTypes from "prop-types";
 import styles from "./EndTurnButtonStyles";
 
+// Adding number 22 adjusts alpha channel of the color i.e. makes the background color semi-transparent
 export default function EndTurnButton(props) {
   return (
     <Pressable

@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import TimeDisplay from "../TimeDisplay/TimeDisplay";
 import styles from "./PlayerDisplayStyles";
 
+// Adding number 22 adjusts alpha channel of the color i.e. makes the background color semi-transparent
 export default function PlayerDisplay(props) {
   return (
     <View style={{ opacity: props.buttonOpacity }}>
