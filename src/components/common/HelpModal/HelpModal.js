@@ -1,6 +1,7 @@
 import React from "react";
-import { View, Modal, StyleSheet, Pressable } from "react-native";
+import { View, Modal, Pressable } from "react-native";
 import PropTypes from "prop-types";
+import styles from "./HelpModalStyles";
 
 export default function HelpModal(props) {
   return (
@@ -11,24 +12,5 @@ export default function HelpModal(props) {
     </Modal>
   );
 }
-
-const styles = StyleSheet.create({
-  modal: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#00000080",
-  },
-  box: {
-    width: 300,
-    height: 300,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#2D3944",
-    borderWidth: 2,
-    borderColor: "white",
-    borderRadius: 10,
-  },
-});
 
 HelpModal.propTypes = { closeHelp: PropTypes.func, children: PropTypes.object };

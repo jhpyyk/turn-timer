@@ -1,6 +1,7 @@
 import React from "react";
-import { Pressable, StyleSheet } from "react-native";
+import { Pressable } from "react-native";
 import PropTypes from "prop-types";
+import styles from "./EndTurnButtonStyles";
 
 export default function EndTurnButton(props) {
   return (
@@ -20,18 +21,6 @@ export default function EndTurnButton(props) {
     </Pressable>
   );
 }
-
-const styles = StyleSheet.create({
-  buttonStyle: {
-    width: 300,
-    height: 300,
-    justifyContent: "center",
-    alignItems: "center",
-    margin: 10,
-    borderRadius: 150,
-    borderWidth: 6,
-  },
-});
 
 EndTurnButton.propTypes = {
   color: PropTypes.string,

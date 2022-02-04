@@ -1,6 +1,7 @@
 import React from "react";
-import { StyleSheet, TextInput } from "react-native";
+import { TextInput } from "react-native";
 import PropTypes from "prop-types";
+import styles from "./FormFieldStyles";
 
 const FormField = (props, ref) => {
   return (
@@ -19,15 +20,3 @@ const FormField = (props, ref) => {
 export default React.forwardRef(FormField);
 
 FormField.propTypes = { style: PropTypes.object };
-
-const styles = StyleSheet.create({
-  input: {
-    width: 300,
-    height: 50,
-    margin: 10,
-    padding: 10,
-    color: "white",
-    borderWidth: 1,
-    borderColor: "white",
-  },
-});

@@ -1,5 +1,5 @@
 import React from "react";
-import PlayerDisplay from "./PlayerDisplay";
+import PlayerDisplay from "../PlayerDisplay/PlayerDisplay";
 
 export default function PlayerList(props) {
   const listItems = props.playerArray.map((player, index) => (

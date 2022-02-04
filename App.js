@@ -1,8 +1,8 @@
 import { StatusBar } from "expo-status-bar";
 import React, { useEffect, useState } from "react";
 import { View, StyleSheet } from "react-native";
-import AddPlayersForm from "./src/screens/AddPlayersForm.js";
-import TimerScreen from "./src/screens/TimerScreen.js";
+import AddPlayersForm from "./src/screens/AddPlayersForm/AddPlayersForm.js";
+import TimerScreen from "./src/screens/TimerScreen/TimerScreen.js";
 
 export default function App() {
   const [screen, setScreen] = useState(null);

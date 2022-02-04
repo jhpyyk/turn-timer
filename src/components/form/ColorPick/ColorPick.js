@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { Pressable, StyleSheet, View } from "react-native";
+import { Pressable, View } from "react-native";
 import PropTypes from "prop-types";
+import styles from "./ColorPickStyles";
 
 export default function ColorPick(props) {
   const [selected, setSelected] = useState(null);
@@ -45,21 +46,3 @@ export default function ColorPick(props) {
 }
 
 ColorPick.propTypes = { colorCubePressed: PropTypes.func };
-
-const styles = StyleSheet.create({
-  container: {
-    width: 300,
-    display: "flex",
-    flexDirection: "row",
-    flexWrap: "wrap",
-    justifyContent: "center",
-    margin: 10,
-  },
-  colorCube: {
-    width: 40,
-    height: 40,
-    borderRadius: 3,
-    margin: 5,
-    padding: 5,
-  },
-});

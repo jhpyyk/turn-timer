@@ -1,7 +1,8 @@
 import React from "react";
-import { StyleSheet, Text } from "react-native";
+import { Text } from "react-native";
 import PropTypes from "prop-types";
-import RoundedEdgeButton from "../common/RoundedEdgeButton";
+import RoundedEdgeButton from "../../common/RoundedCornersButton/RoundedCornersButton";
+import styles from "./PauseButtonStyles";
 
 export default function PauseButton(props) {
   return (
@@ -17,13 +18,5 @@ export default function PauseButton(props) {
     </RoundedEdgeButton>
   );
 }
-
-const styles = StyleSheet.create({
-  buttonStyle: {
-    width: 230,
-    height: 40,
-    margin: 10,
-  },
-});
 
 PauseButton.propTypes = { color: PropTypes.string, style: PropTypes.object };

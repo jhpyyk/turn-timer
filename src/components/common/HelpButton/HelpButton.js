@@ -1,6 +1,7 @@
 import React from "react";
-import { Pressable, StyleSheet, Text } from "react-native";
+import { Pressable, Text } from "react-native";
 import PropTypes from "prop-types";
+import styles from "./HelpButtonStyles";
 
 export default function HelpButton(props) {
   return (
@@ -13,17 +14,5 @@ export default function HelpButton(props) {
     </Pressable>
   );
 }
-
-const styles = StyleSheet.create({
-  buttonStyle: {
-    width: 36,
-    height: 36,
-    justifyContent: "center",
-    alignItems: "center",
-    borderRadius: 18,
-    borderWidth: 2,
-    margin: 5,
-  },
-});
 
 HelpButton.propTypes = { textColor: PropTypes.string, style: PropTypes.object };

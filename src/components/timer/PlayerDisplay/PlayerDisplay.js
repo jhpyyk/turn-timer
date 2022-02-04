@@ -1,7 +1,8 @@
 import React from "react";
-import { Pressable, StyleSheet, View, Text } from "react-native";
+import { Pressable, View, Text } from "react-native";
 import PropTypes from "prop-types";
-import TimeDisplay from "./TimeDisplay";
+import TimeDisplay from "../TimeDisplay/TimeDisplay";
+import styles from "./PlayerDisplayStyles";
 
 export default function PlayerDisplay(props) {
   return (
@@ -21,19 +22,6 @@ export default function PlayerDisplay(props) {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  buttonStyle: {
-    flexDirection: "row",
-    width: 230,
-    height: 40,
-    justifyContent: "center",
-    alignItems: "center",
-    margin: 5,
-    borderRadius: 10,
-    borderWidth: 3,
-  },
-});
 
 PlayerDisplay.propTypes = {
   buttonOpacity: PropTypes.number,
