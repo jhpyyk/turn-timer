@@ -4,9 +4,9 @@
     "slug": "turn-timer",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/turntimericon.png",
+    "icon": "./assets/adaptive-icon.png",
     "splash": {
-      "image": "./assets/turntimericon.png",
+      "image": "./assets/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#1C2833"
     },
@@ -22,7 +22,8 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       },
-      "softwareKeyboardLayoutMode": "pan"
+      "softwareKeyboardLayoutMode": "pan",
+      "package": "com.jhpyyk.turntimer"
     },
     "androidNavigationBar": {
       "visible": "sticky-immersive",
