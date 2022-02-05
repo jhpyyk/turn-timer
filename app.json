@@ -25,10 +25,6 @@
       "softwareKeyboardLayoutMode": "pan",
       "package": "com.jhpyyk.turntimer"
     },
-    "androidNavigationBar": {
-      "visible": "sticky-immersive",
-      "barStyle": "light-content"
-    },
     "web": {
       "favicon": "./assets/adaptive-icon.png"
     }
