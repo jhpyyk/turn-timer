@@ -4,11 +4,11 @@
     "slug": "turn-timer",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/turntimericon.png",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/turntimericon.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#1C2833"
     },
     "updates": {
       "fallbackToCacheTimeout": 0

@@ -6,8 +6,8 @@ Useful for long games where a lot of the playing time is spent by players thinki
 
 ## Screenshots
 
-<img src="./assets/turntimerform.png" width="30%" height="30%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<img src="./assets/turntimertimer.png" width="30%" height="30%">
+<img src="./.github/turntimerform.png" width="30%" height="30%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<img src="./.github/turntimertimer.png" width="30%" height="30%">
 
 ## Possible future features
 
