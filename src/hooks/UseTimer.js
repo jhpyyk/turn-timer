@@ -15,7 +15,7 @@ export default function useTimer(time, playerIndex) {
   };
 
   const getTime = () => {
-    return calculateTimeLeft();
+    return calculateTimeLeft(Date.now());
   };
 
   const calculateTimeLeft = (timeStamp) => {
