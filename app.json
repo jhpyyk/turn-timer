@@ -30,7 +30,7 @@
       "barStyle": "light-content"
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/adaptive-icon.png"
     }
   }
 }
