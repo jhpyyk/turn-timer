@@ -11,6 +11,15 @@ Useful for long games where a lot of the playing time is spent by players thinki
 
 ## Possible future features
 
+- Skip: player is skipped for this round
 - Change player turn order
 - Mercy time: if a player's time runs out, there's an option to give them more
 - Increment option: add time on every turn
+
+## Availability
+
+- APK is available in releases
+- Expo Go URL: exp://exp.host/@jhpyyk/turn-timer
+- Try it on Snack: https://snack.expo.dev/@jhpyyk/turn-timer-snack
+
+May be published in Google Play Store in the future.
